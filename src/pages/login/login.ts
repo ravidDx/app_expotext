@@ -5,7 +5,7 @@ import { DocumentViewerOptions } from '@ionic-native/document-viewer';
 //importar componentes de Ionic
 import {FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
 
-import { RegistroPage,MenuPage } from '../index.pages'
+import { RegistroPage, TabsPage, ExpositoresPage } from '../index.pages';
 
 /**
  * Generated class for the LoginPage page.
@@ -43,7 +43,7 @@ export class LoginPage {
   	//const options: DocumentViewerOptions = {title: 'My PDF'}
 	  //this.err=this.document.viewDocument('assets/pdf/cuento.pdf', 'application/pdf', options);
 	  //console.log(this.err.error);
-
+    console.log("Contructor");
     this.loginForm = fb.group({
       'email' : ['',Validators.compose([Validators.required])],
       'password' : ['',Validators.compose([Validators.required])],
@@ -68,16 +68,12 @@ export class LoginPage {
     this.navCtrl.push(RegistroPage);
   }
 
-  //ir a page registro
-  goMenuPage(){
-    console.log('Menu de usuario');
-    this.navCtrl.push(MenuPage);
-  }
 
   //Funcion Login
   login(){
     console.log('Login');
-    
+    this.navCtrl.setRoot(TabsPage);
+    //this.navCtrl.push(ExpositoresPage);
   }
 
 	

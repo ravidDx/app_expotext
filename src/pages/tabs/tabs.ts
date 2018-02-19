@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ExpositoresPage } from '../index.pages'
+import { ExpositoresPage,
+         HomePage,
+         ContactosPage,
+         ScanPage,
+         AgendaPage } from '../index.pages'
 
 /**
  * Generated class for the TabsPage page.
@@ -16,13 +20,15 @@ import { ExpositoresPage } from '../index.pages'
 })
 export class TabsPage {
 
-
-  page1: any = ExpositoresPage;
-  page2: any = ExpositoresPage;
-  page3: any = ExpositoresPage;
-
+  page1: any = HomePage;
+  page2: any = ContactosPage;
+  page3: any = ScanPage;
+  page4: any = ExpositoresPage;
+  page5: any = AgendaPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+   
+
   }
 
   ionViewDidLoad() {

@@ -7,7 +7,17 @@ import { DocumentViewer } from '@ionic-native/document-viewer';
 
 import { MyApp } from './app.component';
 /*import { HomePage } from '../pages/home/home';*/
-import { LoginPage, RegistroPage, MenuPage, ExpositoresPage,TabsPage } from '../pages/index.pages'
+import { LoginPage, 
+         RegistroPage, 
+         MenuPage, 
+         ExpositoresPage,
+         TabsPage,
+         ContactosPage,
+         PerfilContactoPage,
+         HomePage,
+         ScanPage,
+         AgendaPage,
+         PerfilUsuarioPage } from '../pages/index.pages'
 
 
 
@@ -19,7 +29,13 @@ import { LoginPage, RegistroPage, MenuPage, ExpositoresPage,TabsPage } from '../
     RegistroPage,
     MenuPage,
     ExpositoresPage,
-    TabsPage
+    TabsPage,
+    ContactosPage,
+    PerfilContactoPage,
+    HomePage,
+    ScanPage,
+    AgendaPage,
+    PerfilUsuarioPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +49,13 @@ import { LoginPage, RegistroPage, MenuPage, ExpositoresPage,TabsPage } from '../
     RegistroPage,
     MenuPage,
     ExpositoresPage,
-    TabsPage
+    TabsPage,
+    ContactosPage,
+    PerfilContactoPage,
+    HomePage,
+    ScanPage,
+    AgendaPage,
+    PerfilUsuarioPage
   ],
   providers: [
     StatusBar,

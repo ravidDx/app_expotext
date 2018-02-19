@@ -1,14 +1,26 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+<ion-header id="header">
+	<ion-grid >
+	  <ion-row>
+	    <ion-col col-6>
+	    	<ion-thumbnail item-start>
+		      <img  src="assets/imgs/menu/recurso-1.png" alt="logo_expotext">
+		    </ion-thumbnail>
+	    </ion-col>
+	    <ion-col col-6 id="col-perfil" (click)="goPerfilUsuarioPage()" >
+	    	<ion-thumbnail item-start>
+		      <img id="img-perfil" src="assets/imgs/menu/recurso-2.png" width="20%" alt="perfil">
+		    </ion-thumbnail>
+	    </ion-col>
+	  </ion-row>
+	</ion-grid>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+	<h1>PANTALLA DE INICIO</h1>
+	<p>------------------------------</p>
+	<h2>Slider (Imagenes de pagina web)</h2>
+	<p>------------------------------</p>
+	<h2>Lista (Logos Y marcas auspiciantes)</h2>
+  
 </ion-content>
