@@ -3,12 +3,20 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
+import { LoginPage, RegistroPage, MenuPage, ExpositoresPage,TabsPage } from '../pages/index.pages';
+/*import { LoginPage } from '../pages/login/login';*/
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+
+  login:any = LoginPage;
+  registro:any = RegistroPage;
+  menu:any = MenuPage;
+  expositores:any = ExpositoresPage;
+  tabs:any = TabsPage;
+  rootPage:any = LoginPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
@@ -17,6 +25,11 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+  }
+
+  irPagina(pagina:any){
+    this.rootPage=pagina;
+    
   }
 }
 
