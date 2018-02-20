@@ -24,35 +24,15 @@
 
 <ion-content padding>
 	<ion-list>
-	  <ion-item class="item-expositor">
+	  <ion-item class="item-expositor" *ngFor="let empresa of empresasList; let i=index "  (click)="presentInform(i)" >
 	    <ion-avatar item-start>
-	      <img id="logo-expositor" src="assets/imgs/expositores/perfil.jpg" >
+	      <img id="logo-expositor" src="{{urlLogo}}/{{empresa.logo}}">
 	    </ion-avatar>
-	    <h2>Raul Bastidas</h2>
-	    <h3>0990564366</h3>
-	    <p>@desarrollador.com</p>
-	    <p>Quito</p>
-	    <p>Cdla.Ibarra</p>
-	  </ion-item>
-	  <ion-item class="item-expositor">
-	    <ion-avatar item-start>
-	      <img id="logo-expositor" src="assets/imgs/expositores/perfil.jpg" >
-	    </ion-avatar>
-	    <h2>Raul Bastidas</h2>
-	    <h3>0990564366</h3>
-	    <p>@desarrollador.com</p>
-	    <p>Quito</p>
-	    <p>Cdla.Ibarra</p>
-	  </ion-item>
-	  <ion-item class="item-expositor">
-	    <ion-avatar item-start>
-	      <img id="logo-expositor" src="assets/imgs/expositores/perfil.jpg" >
-	    </ion-avatar>
-	    <h2>Raul Bastidas</h2>
-	    <h3>0990564366</h3>
-	    <p>@desarrollador.com</p>
-	    <p>Quito</p>
-	    <p>Cdla.Ibarra</p>
+	    <h2>{{empresa.name}}</h2>
+	    <h3>{{empresa.phone}}</h3>
+	    <p>{{empresa.web_link}}</p>
+	    <p>{{empresa.email}}</p>
+	    <p>{{empresa.company_address}}</p>
 	  </ion-item>
 	</ion-list>
 
