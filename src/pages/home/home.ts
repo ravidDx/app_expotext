@@ -9,6 +9,10 @@ import { PerfilUsuarioPage } from '../index.pages';
 })
 export class HomePage {
 
+   
+
+
+
   constructor(public navCtrl: NavController) {
 
   }
@@ -17,5 +21,7 @@ export class HomePage {
   	console.log("Ir a pagina Perfil Usuario");
   	this.navCtrl.push(PerfilUsuarioPage);
   }  
+
+
 
 }

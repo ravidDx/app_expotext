@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient , HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
@@ -12,7 +12,12 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ExpositoresProvider {
 
-  url:string = "http://127.0.0.1:8000/api/empresas/all";
+  cabecera;
+
+  //url:string = "http://127.0.0.1:8000/api/empresas/all";
+  url:string = "http://192.168.0.22/api/empresas/all";
+  //url:string = "http://localhost/api/empresas/all";
+  
   empresasList:any[]=[];
 
 
@@ -21,6 +26,11 @@ export class ExpositoresProvider {
   /*--------------------------------------------------------*/
   constructor(public http: HttpClient) {
     console.log('Hello ExpositoresProvider Provider');
+    this.cabecera = new HttpHeaders().set('content-type', 'application/json');
+    this.cabecera.set('Access-Control-Allow-Origin', '*');
+    this.cabecera.set('Access-Control-Allow-Credentials', 'true');
+    this.cabecera.set('Access-Control-Allow-Headers', 'Content-Type');
+    this.cabecera.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   }
 
   /*METODOS*/
@@ -28,7 +38,7 @@ export class ExpositoresProvider {
 
   //Funcion para obtener las empresas de la BD
   getAllEmpresas(){
-  	return this.http.get(this.url).map(
+  	return this.http.get(this.url , { headers: this.cabecera } ).map(
   		res => {
   			console.log(" Solicitud recibida");
        		return res;
