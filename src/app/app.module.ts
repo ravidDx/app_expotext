@@ -4,15 +4,16 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { DocumentViewer } from '@ionic-native/document-viewer';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 
 /*Components*/
-import { LoginPage, 
-         RegistroPage, 
-         MenuPage, 
+import { LoginPage,
+         RegistroPage,
+         MenuPage,
          ExpositoresPage,
          TabsPage,
          ContactosPage,
@@ -22,7 +23,7 @@ import { LoginPage,
          AgendaPage,
          PerfilUsuarioPage } from '../pages/index.pages'
 
-/*Services*/       
+/*Services*/
 import { ExpositoresProvider } from '../providers/expositores/expositores';
 
 
@@ -46,7 +47,8 @@ import { ExpositoresProvider } from '../providers/expositores/expositores';
     BrowserModule,
     HttpClientModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

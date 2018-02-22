@@ -3,8 +3,8 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { LoginPage, 
-         RegistroPage, 
+import { LoginPage,
+         RegistroPage,
          MenuPage,
          ExpositoresPage,
          TabsPage,
@@ -44,7 +44,7 @@ export class MyApp {
   }
 
   irPagina(pagina:any){
-    this.rootPage=pagina;  
+    this.rootPage=pagina;
   }
 }
 

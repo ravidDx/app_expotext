@@ -27,19 +27,20 @@ export class LoginPage {
   email: AbstractControl;
   password:AbstractControl;
   errorMessage:string = null;
-  loginForm : FormGroup;  
+  loginForm : FormGroup;
   hidden=true;
+  valor;
 
 
   /*COSTRUCTOR*/
   /*-----------------------------------------------------------------------------*/
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
   	          public navParams: NavParams,
   			      private document: DocumentViewer,
               private fb:FormBuilder,
-              public loadingCtrl: LoadingController) 
+              public loadingCtrl: LoadingController)
   {
-  	
+
   	//const options: DocumentViewerOptions = {title: 'My PDF'}
 	  //this.err=this.document.viewDocument('assets/pdf/cuento.pdf', 'application/pdf', options);
 	  //console.log(this.err.error);
@@ -51,13 +52,14 @@ export class LoginPage {
 
     this.email = this.loginForm.controls['email'];
     this.password = this.loginForm.controls['password'];
+
   }
 
 
 
   /*METODOS*/
   /*-----------------------------------------------------------------------------*/
-  
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
@@ -71,11 +73,19 @@ export class LoginPage {
 
   //Funcion Login
   login(){
-    console.log('Login');
-    this.navCtrl.setRoot(TabsPage);
+    // console.log('Login');
+
     //this.navCtrl.push(ExpositoresPage);
+    // var jsonLogin ={
+    //   "email":this.email.value,
+    //   "pass":this.password.value
+    // };
+    // localStorage.setItem("loginJson", JSON.stringify(jsonLogin));
+    // var datos = JSON.parse(localStorage.getItem("loginJson"));
+    // this.valor = datos.email +" "+datos.pass;
+    this.navCtrl.setRoot(TabsPage);
   }
 
-	
+
 
 }

@@ -1,5 +1,15 @@
+$text-input-highlight-color-valid : #32db64;
+$text-input-placeholder-color : #999;
+$text-input-highlight-color-invalid: 	#f53d3d;
 page-login {
-	
+
+  //.input-cover  {
+  //  border-bottom-left-radius: 2.2rem;
+  //  border-bottom-right-radius: 2.2rem;
+  //  border-top-left-radius: 2.2rem;
+  //  border-top-right-radius: 2.2rem;
+  //}
+
 	#item-1 {
 		margin-bottom: 1em;
 	}
@@ -28,6 +38,6 @@ page-login {
 	#grid {
 		text-align: -webkit-center;
 		margin-bottom: 4em;
-	}		
+	}
 
 }
