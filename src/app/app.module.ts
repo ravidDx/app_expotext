@@ -6,6 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { DocumentViewer } from '@ionic-native/document-viewer';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';     
+import { CustomFormsModule } from 'ng2-validation';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
@@ -25,6 +27,7 @@ import { LoginPage,
 
 /*Services*/
 import { ExpositoresProvider } from '../providers/expositores/expositores';
+import { UsuariosProvider } from '../providers/usuarios/usuarios';
 
 
 @NgModule({
@@ -47,6 +50,8 @@ import { ExpositoresProvider } from '../providers/expositores/expositores';
     BrowserModule,
     HttpClientModule,
     HttpModule,
+    FormsModule,
+    CustomFormsModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -71,7 +76,8 @@ import { ExpositoresProvider } from '../providers/expositores/expositores';
     SplashScreen,
     DocumentViewer,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ExpositoresProvider
+    ExpositoresProvider,
+    UsuariosProvider
   ]
 })
 export class AppModule {}

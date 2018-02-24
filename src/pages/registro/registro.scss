@@ -7,14 +7,30 @@ page-registro {
   #section-logo{
   }
 
-  .item{
+   #form-text{
+     color: white;
+     text-align: center;
+     font-family: cursive;
+     font-size: 15px;
+
+   }
+
+  .itemForm{
 	  margin-bottom: 1em;
   }
 
-  #btn{
-	color: #1a58c5;
+  #btnForm{
+	  color: #1a58c5;
     font-size: 1.7em;
     background-color: white;
     font-family: cursive;
   }
+
+  #form-text-err{
+     color: #e6a2a2;
+     padding-left: 26px;
+   }
+
+
+      
 }

@@ -5,47 +5,145 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <div id="section-logo" navPop>
-		<ion-thumbnail item-start>
-		    <img  src="assets/imgs/registro/recurso-1.png" alt="logo_expotext">
-		</ion-thumbnail>
-	</div>
+  
+    <ion-navbar hideBackButton>
+        <ion-buttons left>
+          <button ion-button (click)="irRegistroPage1()" style="color: white;">
+              <ion-icon class="customIcon" name="arrow-back"></ion-icon>
+          </button>
+        </ion-buttons>
+
+        <div id="section-logo" >
+          <ion-thumbnail item-start>
+              <img  src="assets/imgs/registro/recurso-1.png" alt="logo_expotext">
+          </ion-thumbnail>
+        </div>
+    </ion-navbar>
+
 </ion-header>
 
 
 <ion-content padding id="content-registro" >
-	<form>
-      <ion-item class="item">
-        <ion-input class="input" type="text" placeholder="Nombre y Apellido"></ion-input>
-      </ion-item>
-      <ion-item class="item">
-        <ion-input  type="text" placeholder="Email"></ion-input>
-      </ion-item>
-      <ion-item class="item">
-        <ion-input class="input" type="text" placeholder="Teléfono"></ion-input>
-      </ion-item>
-      <ion-item class="item">
-        <ion-input  type="text" placeholder="Dirección"></ion-input>
-      </ion-item>
-      <ion-item class="item">
-        <ion-input class="input" type="text" placeholder="Categoria"></ion-input>
-      </ion-item>
-      <ion-item class="item">
-        <ion-input  type="text" placeholder="Ciudad"></ion-input>
-      </ion-item>
-      <ion-item class="item">
-        <ion-input  type="text" placeholder="Fecha de Nacimiento"></ion-input>
-      </ion-item>
-   
-    </form>
 
+    <h1 id="form-text">{{text}}</h1>
+
+    <form [formGroup]="registroForm" >
+      <ion-item class="itemForm" [hidden]=!page>
+        <ion-input [formControl]="names" class="input" type="text" placeholder="Nombre"></ion-input>
+      </ion-item>
+      <div *ngIf="registroForm.get('names').errors && registroForm.get('names').dirty" [hidden]=!page>
+          <p id="form-text-err" *ngIf="registroForm.get('names').hasError('required')">* campo es requerido</p>
+          <p id="form-text-err" *ngIf="registroForm.get('names').hasError('maxlength')">* maximo de 15 caracteres</p>
+      </div>
+
+      <ion-item class="itemForm" [hidden]=!page>
+        <ion-input [formControl]="last_names" class="input" type="text" placeholder="Apellido"></ion-input>
+      </ion-item>
+      <div *ngIf="registroForm.get('last_names').errors && registroForm.get('last_names').dirty" [hidden]=!page>
+          <p id="form-text-err" *ngIf="registroForm.get('last_names').hasError('required')">* campo es requerido</p>
+          <p id="form-text-err" *ngIf="registroForm.get('last_names').hasError('maxlength')">* maximo de 15 caracteres</p>
+      </div>
+
+      <ion-item class="itemForm" [hidden]=!page>
+        <ion-input [formControl]="cedula" class="input" type="text" placeholder="Cedula de Identidad"></ion-input>
+      </ion-item>
+      <div *ngIf="registroForm.get('cedula').errors && registroForm.get('cedula').dirty" [hidden]=!page>
+          <p id="form-text-err" *ngIf="registroForm.get('cedula').hasError('required')">* campo es requerido</p>
+          <p id="form-text-err" *ngIf="registroForm.get('cedula').hasError('maxlength')">* maximo de 15 caracteres</p>
+      </div>
+
+      <ion-item class="itemForm" [hidden]=!page>
+        <ion-input [formControl]="email" class="input" type="email" placeholder="Email"></ion-input>
+      </ion-item>
+      <div *ngIf="registroForm.get('email').errors && registroForm.get('email').dirty" [hidden]=!page>
+          <p id="form-text-err" *ngIf="registroForm.get('email').hasError('required')">* campo es requerido</p>
+          <p id="form-text-err" *ngIf="registroForm.get('email').hasError('email')">* email no valido (ej. raul@raul.com)</p>
+      </div>
+
+      <ion-item class="itemForm"[hidden]=!page>
+        <ion-input [formControl]="password" class="input" type="password" placeholder="Contraseña"></ion-input>
+      </ion-item>
+      <div *ngIf="registroForm.get('password').errors && registroForm.get('password').dirty" [hidden]=!page>
+          <p id="form-text-err" *ngIf="registroForm.get('password').hasError('required')">* campo es requerido</p>
+          <p id="form-text-err" *ngIf="registroForm.get('password').hasError('minlength')">* minimo de 6 caracteres</p>
+          <p id="form-text-err" *ngIf="registroForm.get('password').hasError('maxlength')">* maximo de 15 caracteres</p>        
+      </div>
+     
+       <ion-item class="itemForm"[hidden]=!page>
+        <ion-input [formControl]="re_password" class="input" type="password" placeholder="Verificar Contraseña"></ion-input>
+      </ion-item>
+       <div *ngIf="registroForm.get('re_password').errors && registroForm.get('re_password').dirty" [hidden]=!page>
+          <p id="form-text-err" *ngIf="registroForm.get('re_password').hasError('required')">* campo es requerido</p>
+          <p id="form-text-err" *ngIf="registroForm.get('re_password').hasError('equalTo') &&registroForm.get('re_password').touched">* Contraseña no coincide</p>
+      </div>
+      
+      <ion-item class="itemForm" [hidden]=!page>
+         <ion-datetime displayFormat="MM/DD/YYYY" [formControl]="birth" placeholder="Fecha de Nacimiento"></ion-datetime>
+         <!--
+         <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="DD MMMM YYYY" min="1918" max="2018" [formControl]="birth" placeholder="Fecha de Nacimiento">
+        </ion-datetime>
+         -->
+      </ion-item>
+
+      
+      <!--Page 2-->
+
+      <ion-item class="itemForm" [hidden]=page>
+        <ion-input [formControl]="company" class="input" type="text" placeholder="Empresa"></ion-input>
+      </ion-item>
+      <div *ngIf="registroForm.get('company').errors && registroForm.get('company').dirty" [hidden]=page>
+          <p id="form-text-err" *ngIf="registroForm.get('company').hasError('required')">* campo es requerido</p>
+          <p id="form-text-err" *ngIf="registroForm.get('company').hasError('maxlength')">* maximo de 25 digitos</p>
+      </div>
+
+      <ion-item class="itemForm" [hidden]=page>
+        <ion-input [formControl]="activity" class="input" type="text" placeholder="Actividad"></ion-input>
+      </ion-item>
+      <div *ngIf="registroForm.get('activity').errors && registroForm.get('activity').dirty" [hidden]=page>
+          <p id="form-text-err" *ngIf="registroForm.get('activity').hasError('required')">* campo es requerido</p>
+          <p id="form-text-err" *ngIf="registroForm.get('activity').hasError('maxlength')">* maximo de 40 digitos</p>
+      </div>
+
+       <ion-item class="itemForm" [hidden]=page>
+        <ion-input [formControl]="id_category" class="input" type="text" placeholder="Categoria"></ion-input>
+      </ion-item>
+      <div *ngIf="registroForm.get('id_category').errors && registroForm.get('id_category').dirty" [hidden]=page>
+          <p id="form-text-err" *ngIf="registroForm.get('id_category').hasError('required')">* campo es requerido</p>
+      </div>
+
+      <ion-item class="itemForm" [hidden]=page>
+        <ion-input  [formControl]="city" class="input" type="text" placeholder="Ciudad"></ion-input>
+      </ion-item>
+      <div *ngIf="registroForm.get('city').errors && registroForm.get('city').dirty" [hidden]=page>
+          <p id="form-text-err" *ngIf="registroForm.get('city').hasError('required')">* campo es requerido</p>
+          <p id="form-text-err" *ngIf="registroForm.get('city').hasError('maxlength')">* maximo de 10 digitos</p>
+      </div>
+
+      <ion-item class="itemForm" [hidden]=page>
+        <ion-input [formControl]="user_address"  class="input" type="text" placeholder="Direccion"></ion-input>
+      </ion-item>
+      <div *ngIf="registroForm.get('user_address').errors && registroForm.get('user_address').dirty" [hidden]=page>
+          <p id="form-text-err" *ngIf="registroForm.get('user_address').hasError('required')">* campo es requerido</p>
+           <p id="form-text-err" *ngIf="registroForm.get('user_address').hasError('maxlength')">* maximo de 40 digitos</p>
+      </div>
+
+      <ion-item class="itemForm" [hidden]=page>
+        <ion-input [formControl]="phone" class="input" type="number" placeholder="Teléfono"></ion-input>
+      </ion-item>
+      <div *ngIf="registroForm.get('phone').errors && registroForm.get('phone').dirty" [hidden]=page>
+          <p id="form-text-err" *ngIf="registroForm.get('phone').hasError('required')">* campo es requerido</p>
+          <p id="form-text-err" *ngIf="registroForm.get('phone').hasError('maxlength')">* maximo de 15 digitos</p>
+      </div>
+
+    </form>
 	
 </ion-content>
 
-	<ion-footer >
+	<ion-footer>
 	  <ion-toolbar>
-	    <div text-center >
-    	  <button id="btn" ion-button full outline >INGRESAR</button>
-        </div>
+	    <div text-center>
+        <button id="btnForm" ion-button full outline [hidden]=!page (click)="irRegistroPage2()">SIGUIENTE</button>
+    	  <button id="btnForm" ion-button full outline [hidden]=page [disabled]="!registroForm.valid" (click)="guardarUsuario()">REGISTRARME</button>
+      </div>
 	  </ion-toolbar>
 	</ion-footer>

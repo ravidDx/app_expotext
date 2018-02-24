@@ -22,8 +22,8 @@ export class ExpositoresPage {
 
   empresasList:any;
   //urlLogo:string="http://127.0.0.1:8000/storage";
-  urlLogo:string="http://192.168.0.22/storage";
-  // urlLogo:string="http://localhost/storage";
+  urlLogo:string="http://localhost/storage";
+  //urlLogo:string="http://localhost/storage";
  
     
 
