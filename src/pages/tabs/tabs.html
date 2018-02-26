@@ -13,11 +13,33 @@
 -->
 
 
-<ion-tabs>
-  <ion-tab [root]="page1" tabTitle="Inicio" tabIcon="apps"></ion-tab>
-  <ion-tab [root]="page2" tabTitle="Contactos" tabIcon="people" ></ion-tab>
-  <ion-tab [root]="page3" tabTitle="Scanner" tabIcon="aperture"></ion-tab>
-  <ion-tab [root]="page4" tabTitle="Expositores" tabIcon="search"></ion-tab>
-  <ion-tab [root]="page5" tabTitle="Agenda" tabIcon="calendar" ></ion-tab>
-</ion-tabs>
+<ion-header id="header" >
+  <ion-grid >
+    <ion-row>
+      <ion-col col-6>
+        <ion-thumbnail item-start>
+          <img  src="assets/imgs/menu/recurso-1.png" alt="logo_expotext" width="85%" >
+        </ion-thumbnail>
+      </ion-col>
+      <ion-col col-6 id="col-perfil" >
+        <ion-thumbnail item-start (click)="openPagePerfil()">
+          <img id="img-perfil" src="assets/imgs/menu/recurso-2.png" width="16%" alt="pefil" >
+        </ion-thumbnail>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-header>
+
+<ion-content>
+  <ion-tabs [selectedIndex]='2' id="myTabs">
+    <ion-tab [root]="page1" tabTitle="Inicio" tabIcon="apps"></ion-tab>
+    <ion-tab [root]="page2" tabTitle="Contactos" tabIcon="people" ></ion-tab>
+    <ion-tab [root]="page3" tabTitle="Scanner" tabIcon="aperture"></ion-tab>
+    <ion-tab [root]="page4" tabTitle="Expositores" tabIcon="search"></ion-tab>
+    <ion-tab [root]="page5" tabTitle="Agenda" tabIcon="calendar" ></ion-tab>
+  </ion-tabs>
+</ion-content>
+
+
 

@@ -21,8 +21,9 @@ export class UsuariosProvider {
     console.log('Hello UsuariosProvider Provider');
   }
 
-
-    registerUser(usuario:any){
+  
+  //Metodo que se conecta con el servidor y registra al usuario
+  registerUser(usuario:any){
 
     	console.log("Registrar usuario");
     	this.cabecera = new HttpHeaders().set('content-type', 'application/json');
@@ -43,7 +44,27 @@ export class UsuariosProvider {
 	        return err;
 	      }
 	    )
+  }
+  
+  //Metodo que se conecta con el servidor para ver si existe el usuario
+  loginUser(email:string,password:string){
+    console.log("Provider");
+ 
+    return this.http.get(this.url+'/'+email+"♥"+password).map(
+      res => {
+        console.log("¡ Solicitud recibida !");
+        return res;
+      },
+      err=>{
+        console.log("¡ Solicitud recibida !");
+        return err;
+      });
 
-  	}
+
+  }
+
+  
+
+
 
 }

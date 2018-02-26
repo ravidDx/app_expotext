@@ -25,15 +25,25 @@
 	  </ion-row>
 	</ion-grid>
 
-	<form padding [formGroup]="loginForm" (ngSubmit)="login()">
-      <ion-item id="item-1">
-        <ion-input [formControl]="email" class="textForm" type="email" placeholder="Email" ></ion-input>
+	<label id="label-error" [hidden]="!errorMessage">{{errorMessage}}</label>
+
+	<form padding [formGroup]="loginForm">
+
+       <ion-item id="item-1">
+        <ion-input [formControl]="email" class="input" type="email" placeholder="Email" ></ion-input>
       </ion-item>
-      <ion-item id="item-2">
-        <ion-input [formControl]="password" class="textForm" type="password" placeholder="Contraseña"></ion-input>
+      <div *ngIf="loginForm.get('email').errors && loginForm.get('email').dirty" >
+          <p id="form-text-err" *ngIf="loginForm.get('email').hasError('required')">* campo es requerido</p>
+          <p id="form-text-err" *ngIf="loginForm.get('email').hasError('email')">* email no valido (ej. raul@raul.com)</p>
+      </div>
+      <ion-item id="item-2"> 
+        <ion-input [formControl]="password" class="input" type="password" placeholder="Contraseña"></ion-input>
       </ion-item>
+       <div *ngIf="loginForm.get('password').errors && loginForm.get('password').dirty" >
+          <p id="form-text-err" *ngIf="loginForm.get('password').hasError('required')">* campo es requerido</p>
+      </div>
       <div id="btncenter">
-        <button ion-button type="submit" [disabled]="!loginForm.valid" >INGRESAR</button>
+        <button ion-button type="submit" [disabled]="!loginForm.valid" (click)="login()" >INGRESAR</button>
         <!--<p> {{err.error}}</p>-->
       </div>
     </form>

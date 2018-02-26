@@ -1,20 +1,53 @@
 page-perfil-usuario {
 
-  #header{
-	  background: rgb(46,118,234); /* Old browsers */
-	  background: -moz-linear-gradient(top, rgba(46,118,234,1) 0%, rgba(44,105,211,1) 36%, rgba(30,53,158,1) 74%, rgba(24,31,124,1) 100%, rgba(125,185,232,1) 100%, rgba(32,124,202,1) 100%); /* FF3.6-15 */
-	  background: -webkit-linear-gradient(top, rgba(46,118,234,1) 0%,rgba(44,105,211,1) 36%,rgba(30,53,158,1) 74%,rgba(24,31,124,1) 100%,rgba(125,185,232,1) 100%,rgba(32,124,202,1) 100%); /* Chrome10-25,Safari5.1-6 */
-	  background: linear-gradient(to bottom, rgba(46,118,234,1) 0%,rgba(44,105,211,1) 36%,rgba(30,53,158,1) 74%,rgba(24,31,124,1) 100%,rgba(125,185,232,1) 100%,rgba(32,124,202,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e76ea', endColorstr='#207cca',GradientType=0 ); 
+ #header{
+    background: rgb(46,118,234); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(46,118,234,1) 0%, rgba(44,105,211,1) 36%, rgba(30,53,158,1) 74%, rgba(24,31,124,1) 100%, rgba(125,185,232,1) 100%, rgba(32,124,202,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(46,118,234,1) 0%,rgba(44,105,211,1) 36%,rgba(30,53,158,1) 74%,rgba(24,31,124,1) 100%,rgba(125,185,232,1) 100%,rgba(32,124,202,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(46,118,234,1) 0%,rgba(44,105,211,1) 36%,rgba(30,53,158,1) 74%,rgba(24,31,124,1) 100%,rgba(125,185,232,1) 100%,rgba(32,124,202,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e76ea', endColorstr='#207cca',GradientType=0 );
+
+    height: 12%; 
   }
 
    #header #col-perfil {
     text-align: -webkit-right;
+
   }
 
   #header #img-perfil {
-     padding-top: 14px;
-     margin-right: 10px;
+    margin-right: 9px;
+    margin-top: 15px;
   }
+
+  #icon-back{
+     color: white;
+     padding-top:27px;
+  }
+
+  .text-p{
+    border-bottom-style: groove;
+    color: #2e76ea;
+    border-bottom-color: #becbe2;
+  }
+
+  .text-label{
+    color: #207cca;
+    font-style: oblique;
+    font-size: larger;
+
+  }
+
+   #titulo{
+    color: #2e76ea; 
+  }
+
+  .color-xpotex{
+    color: #207cca;
+  }
+
+   
+
+  
 
 }

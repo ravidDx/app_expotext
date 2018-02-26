@@ -4,7 +4,8 @@ import { ExpositoresPage,
          HomePage,
          ContactosPage,
          ScanPage,
-         AgendaPage } from '../index.pages'
+         AgendaPage,
+         PerfilUsuarioPage } from '../index.pages'
 
 /**
  * Generated class for the TabsPage page.
@@ -25,14 +26,27 @@ export class TabsPage {
   page3: any = ScanPage;
   page4: any = ExpositoresPage;
   page5: any = AgendaPage;
+  page6:any = PerfilUsuarioPage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-   
+  private rootPage:any;
+  usuario:any;
 
+
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams) {
+    this.usuario = this.navParams.get("usuario");
+    //this.rootPage=ScanPage;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TabsPage');
+  }
+
+  //Metodo para abrir el perfil del usuario
+  openPagePerfil(){
+   console.log("perfil");
+   this.navCtrl.push(PerfilUsuarioPage, {'usuario':this.usuario}  );
   }
 
 }

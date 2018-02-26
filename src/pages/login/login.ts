@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { DocumentViewer } from '@ionic-native/document-viewer';
 import { DocumentViewerOptions } from '@ionic-native/document-viewer';
-//importar componentes de Ionic
 import {FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
+import {UsuariosProvider} from '../../providers/usuarios/usuarios';
+
 
 import { RegistroPage, TabsPage, ExpositoresPage } from '../index.pages';
 
@@ -38,7 +39,8 @@ export class LoginPage {
   	          public navParams: NavParams,
   			      private document: DocumentViewer,
               private fb:FormBuilder,
-              public loadingCtrl: LoadingController)
+              public loadingCtrl: LoadingController,
+              private usuariosCtrl:UsuariosProvider)
   {
 
   	//const options: DocumentViewerOptions = {title: 'My PDF'}
@@ -46,12 +48,12 @@ export class LoginPage {
 	  //console.log(this.err.error);
     console.log("Contructor");
     this.loginForm = fb.group({
-      'email' : ['',Validators.compose([Validators.required])],
+      'email' : ['',Validators.compose([Validators.required,Validators.email ])],
       'password' : ['',Validators.compose([Validators.required])],
     });
 
     this.email = this.loginForm.controls['email'];
-    this.password = this.loginForm.controls['password'];
+    this.password = this.loginForm.controls['password'];     
 
   }
 
@@ -73,7 +75,34 @@ export class LoginPage {
 
   //Funcion Login
   login(){
-    // console.log('Login');
+    console.log('Login');
+    this.errorMessage="";
+    let loading = this.loadingCtrl.create({
+        content: 'Por favor espere...'
+    });
+
+    loading.present();
+
+    this.usuariosCtrl.loginUser(this.email.value,this.password.value).subscribe(
+       data => {
+         console.log('Status: Ok.');
+          if(data['status']=='200'){
+             console.log("Si existe usuario");
+             //this.navCtrl.setRoot(MenuPage,{'parametro':data});
+              this.navCtrl.setRoot(TabsPage,{'usuario':data['data']} );
+           }else{
+             console.log("Credenciales invalidas");
+             this.errorMessage=data['message'];          
+           }
+         loading.dismiss();
+
+       },
+       err =>{
+         console.log('Status: Err.');
+         console.log(err);
+         loading.dismiss();
+       });
+
 
     //this.navCtrl.push(ExpositoresPage);
     // var jsonLogin ={
@@ -83,7 +112,7 @@ export class LoginPage {
     // localStorage.setItem("loginJson", JSON.stringify(jsonLogin));
     // var datos = JSON.parse(localStorage.getItem("loginJson"));
     // this.valor = datos.email +" "+datos.pass;
-    this.navCtrl.setRoot(TabsPage);
+   // this.navCtrl.setRoot(TabsPage);
   }
 
 

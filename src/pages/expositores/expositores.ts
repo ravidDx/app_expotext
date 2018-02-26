@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 
 
@@ -32,7 +32,8 @@ export class ExpositoresPage {
   constructor(public navCtrl: NavController, 
   	          public navParams: NavParams,
   	          public expositorCtrl:ExpositoresProvider,
-  	          private alertCtrl: AlertController) {
+  	          private alertCtrl: AlertController,
+              public loadingCtrl: LoadingController) {
   }
 
   /*METODOS*/
@@ -45,17 +46,26 @@ export class ExpositoresPage {
   //Se ejecuta cuando entras en una página, antes de cargarla. 
   ionViewWillEnter(){
     console.log('ionViewWillEnter ExpositoresPage');
+
+    let loading = this.loadingCtrl.create({
+        content: 'Por favor espere...'
+    });
+
+    loading.present();
     
     //Consulta de las empresas en el Servidor
     this.expositorCtrl.getAllEmpresas().subscribe(
       data=>{
+
       	console.log("status: ok");
         this.empresasList=data;
         console.log(this.empresasList);
+        loading.dismiss();
       },
       err=>{
       	console.log("status: error");
         console.log(err);
+         loading.dismiss();
         
       })
       

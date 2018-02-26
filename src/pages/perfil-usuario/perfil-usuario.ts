@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,AlertController} from 'ionic-angular';
 
 /**
  * Generated class for the PerfilUsuarioPage page.
@@ -15,11 +15,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PerfilUsuarioPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  urlLogo:string="http://localhost/storage";
+  usuario:any;
+  
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private alertCtrl: AlertController) {
+  		this.usuario = this.navParams.get("usuario");
+	  	console.log(this.usuario);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PerfilUsuarioPage');
+  }
+
+   //Funcion que presenta el QR
+  presentQr() {
+    let img="<ion-thumbnail item-start> <img src= "+this.urlLogo+'/'+this.usuario['UrlFotoQR']+"></ion-thumbnail>";
+    let alert = this.alertCtrl.create({
+      title: img
+    });
+    alert.present();
+
   }
 
 }

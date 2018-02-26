@@ -147,7 +147,7 @@ export class RegistroPage {
           this.registroForm.reset();
           loading.dismiss();
           this.lanzarMensaje('Registro exitoso!');
-          this.navCtrl.pop();
+          this.navCtrl.pop();   
       },
       err =>{
           console.log("Error");

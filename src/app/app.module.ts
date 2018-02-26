@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { DocumentViewer } from '@ionic-native/document-viewer';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';     
@@ -75,6 +76,7 @@ import { UsuariosProvider } from '../providers/usuarios/usuarios';
     StatusBar,
     SplashScreen,
     DocumentViewer,
+    BarcodeScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ExpositoresProvider,
     UsuariosProvider
