@@ -100,6 +100,7 @@ export class LoginPage {
        err =>{
          console.log('Status: Err.');
          console.log(err);
+         this.error = err;
          loading.dismiss();
        });
 
