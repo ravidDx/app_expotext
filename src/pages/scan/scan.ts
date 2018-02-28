@@ -4,6 +4,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import {ContactosProvider} from '../../providers/contactos/contactos';
 import { ToastController } from 'ionic-angular'; //Importando Componente TOAS de IONIC
 import { ContactosPage } from '../index.pages'
+import { AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the ScanPage page.
@@ -26,12 +27,17 @@ export class ScanPage {
   idUser:any; //contacto 1
   idContacto:any; //contacto 2
 
+  urlLogo:string="http://192.168.0.106/storage";
+
+  userPerfil:any;
+
   constructor(public navCtrl: NavController, 
   	          public navParams: NavParams,
   	          private barcodeScanner: BarcodeScanner,
               public loadingCtrl: LoadingController,
               public contactCtrl:ContactosProvider,
-              private toastCtrl:ToastController) {
+              private toastCtrl:ToastController,
+              private alertCtrl: AlertController) {
 
     this.idUser = navParams.data;
 
@@ -60,6 +66,7 @@ export class ScanPage {
            console.log('Status: Ok.');
             if(data['status']=='200'){
              console.log("Si existe usuario");
+             this.userPerfil=data['data'];
              this.message=data['data']['id'];  
              this.idContacto = data['data']['id'];
              //this.navCtrl.setRoot(MenuPage,{'parametro':data});
@@ -75,8 +82,17 @@ export class ScanPage {
               this.contactCtrl.registerContacto(contactos).subscribe(
                  data =>{
                    console.log(data);
-                   this.lanzarMensaje(data['message']);
                    
+                    let img="<ion-thumbnail item-start> <img src= "+this.urlLogo+'/'+this.userPerfil['UrlFotoQR']+"></ion-thumbnail>";
+                    let alert = this.alertCtrl.create({
+                      title: img,
+                      subTitle:"<br>"+this.userPerfil['names']+" "+this.userPerfil['last_names']+"<br>"+"Cedula: "+this.userPerfil['cedula']+"<br>"+"Email: "+this.userPerfil['email']+'<hr>'+'Telf: '+this.userPerfil['phone']+'<br>'+'Empresa: '+this.userPerfil['company']+'<br>'+'Actividad: '+this.userPerfil['activity'],
+                      message:'<br>'+this.userPerfil['user_address'],
+                      buttons: ['Ok']
+                    });
+                    alert.present();
+                    this.lanzarMensaje(data['message']);
+                                   
                  },
                  err => {
                    console.log(err);
@@ -120,7 +136,6 @@ export class ScanPage {
       });
       toast.present();
     }
-
 
 
 
