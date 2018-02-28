@@ -15,8 +15,9 @@ export class ExpositoresProvider {
   cabecera;
 
   //url:string = "http://127.0.0.1:8000/api/empresas/all";
-  url:string = "http://localhost/api/empresas/all";
-  //url:string = "http://localhost/api/empresas/all";
+ //url:string = "http://localhost/api/empresas/all";
+ //url:string = "http://192.168.0.23/api/empresas/all";
+ url:string = "http://192.168.0.106/api/empresas/all";
   
   empresasList:any[]=[];
 

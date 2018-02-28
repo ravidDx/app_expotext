@@ -15,7 +15,10 @@ import { IonicPage, NavController, NavParams ,AlertController} from 'ionic-angul
 })
 export class PerfilUsuarioPage {
 
-  urlLogo:string="http://localhost/storage";
+ // urlLogo:string="http://localhost/storage";
+  //urlLogo:string="http://192.168.0.23/storage";
+
+  urlLogo:string="http://192.168.0.106/storage";
   usuario:any;
   
   constructor(public navCtrl: NavController,

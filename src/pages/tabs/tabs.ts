@@ -30,12 +30,14 @@ export class TabsPage {
 
   private rootPage:any;
   usuario:any;
+  idUser:any;
 
 
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams) {
     this.usuario = this.navParams.get("usuario");
+    this.idUser= this.usuario['id'];
     //this.rootPage=ScanPage;
   }
 
@@ -45,8 +47,8 @@ export class TabsPage {
 
   //Metodo para abrir el perfil del usuario
   openPagePerfil(){
-   console.log("perfil");
-   this.navCtrl.push(PerfilUsuarioPage, {'usuario':this.usuario}  );
+    console.log("perfil");
+    this.navCtrl.push(PerfilUsuarioPage, {'usuario':this.usuario}  );
   }
 
 }

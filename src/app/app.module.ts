@@ -29,6 +29,7 @@ import { LoginPage,
 /*Services*/
 import { ExpositoresProvider } from '../providers/expositores/expositores';
 import { UsuariosProvider } from '../providers/usuarios/usuarios';
+import { ContactosProvider } from '../providers/contactos/contactos';
 
 
 @NgModule({
@@ -79,7 +80,8 @@ import { UsuariosProvider } from '../providers/usuarios/usuarios';
     BarcodeScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ExpositoresProvider,
-    UsuariosProvider
+    UsuariosProvider,
+    ContactosProvider
   ]
 })
 export class AppModule {}

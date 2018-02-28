@@ -34,8 +34,8 @@
 <ion-content>
   <ion-tabs [selectedIndex]='2' id="myTabs">
     <ion-tab [root]="page1" tabTitle="Inicio" tabIcon="apps"></ion-tab>
-    <ion-tab [root]="page2" tabTitle="Contactos" tabIcon="people" ></ion-tab>
-    <ion-tab [root]="page3" tabTitle="Scanner" tabIcon="aperture"></ion-tab>
+    <ion-tab [root]="page2" tabTitle="Contactos" tabIcon="people" [rootParams]="idUser"></ion-tab>
+    <ion-tab [root]="page3" tabTitle="Scanner" tabIcon="aperture" [rootParams]="idUser"></ion-tab>
     <ion-tab [root]="page4" tabTitle="Expositores" tabIcon="search"></ion-tab>
     <ion-tab [root]="page5" tabTitle="Agenda" tabIcon="calendar" ></ion-tab>
   </ion-tabs>

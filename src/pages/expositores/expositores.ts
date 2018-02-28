@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 
-
 //Servicio
 import {ExpositoresProvider} from '../../providers/expositores/expositores';
 
@@ -22,8 +21,9 @@ export class ExpositoresPage {
 
   empresasList:any;
   //urlLogo:string="http://127.0.0.1:8000/storage";
-  urlLogo:string="http://localhost/storage";
   //urlLogo:string="http://localhost/storage";
+  //urlLogo:string="http://192.168.0.23/storage";
+  urlLogo:string="http://192.168.0.106/storage";
  
     
 

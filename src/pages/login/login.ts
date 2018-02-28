@@ -31,6 +31,7 @@ export class LoginPage {
   loginForm : FormGroup;
   hidden=true;
   valor;
+  idUser:any;
 
 
   /*COSTRUCTOR*/

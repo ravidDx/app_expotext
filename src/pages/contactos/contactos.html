@@ -7,27 +7,16 @@
 
 
 <ion-content padding>
+	
 	<ion-list>
-	  <ion-item class="item-expositor" (click)="goPerfilContactoPage()" >
+	  <ion-item class="item-expositor" *ngFor="let contacto of contactosList; let i=index "  (click)="goPerfilContactoPage()" >
 	    <ion-avatar item-start>
-	      <img src="assets/imgs/expositores/perfil.jpg" >
+	      <img id="logo-expositor" src="assets/imgs/expositores/perfil.jpg">
 	    </ion-avatar>
-	    <h2>Raul Bastidas</h2>
-	    <h3>Merctil</h3>
-	  </ion-item>
-	  <ion-item class="item-expositor"  >
-	    <ion-avatar item-start>
-	      <img  src="assets/imgs/expositores/perfil.jpg" >
-	    </ion-avatar>
-	    <h2>Andres Tapia</h2>
-	    <h3>Big Bang Idea</h3>
-	  </ion-item>
-	  <ion-item class="item-expositor" >
-	    <ion-avatar item-start>
-	      <img  src="assets/imgs/expositores/perfil.jpg" >
-	    </ion-avatar>
-	    <h2>Marlon Caceres</h2>
-	    <h3>Systeltronick</h3>
+	    <h2>{{contacto.names}} {{contacto.last_names}}</h2>
+	    <h3>{{contacto.name}}</h3>
+	    <p>{{contacto.phone}}</p>
+
 	  </ion-item>
 	</ion-list>
 

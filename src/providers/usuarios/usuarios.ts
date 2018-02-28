@@ -14,7 +14,10 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UsuariosProvider {
 
-  url:string = "http://localhost:8000/api/users";
+  //url:string = "http://localhost:8000/api/users";
+
+  //url:string = "http://192.168.0.23/api/users";
+  url:string = "http://192.168.0.106/api/users";
   cabecera;	
 
   constructor(public http: HttpClient) {
