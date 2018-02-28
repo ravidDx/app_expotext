@@ -75,8 +75,8 @@ export class ScanPage {
               this.contactCtrl.registerContacto(contactos).subscribe(
                  data =>{
                    console.log(data);
-                   this.lanzarMensaje('Registro exitoso!');
-                   //this.navCtrl.push(ContactosPage);
+                   this.lanzarMensaje(data['message']);
+                   
                  },
                  err => {
                    console.log(err);

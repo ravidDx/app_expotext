@@ -7,7 +7,9 @@
 
 
 <ion-content padding>
-	
+
+	<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+		
 	<ion-list>
 	  <ion-item class="item-expositor" *ngFor="let contacto of contactosList; let i=index "  (click)="goPerfilContactoPage()" >
 	    <ion-avatar item-start>

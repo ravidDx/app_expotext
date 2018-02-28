@@ -20,6 +20,8 @@ import {ExpositoresProvider} from '../../providers/expositores/expositores';
 export class ExpositoresPage {
 
   empresasList:any;
+  backupEmpresasList:any;
+  searchQuery: string = '';
   //urlLogo:string="http://127.0.0.1:8000/storage";
   //urlLogo:string="http://localhost/storage";
   //urlLogo:string="http://192.168.0.23/storage";
@@ -59,6 +61,7 @@ export class ExpositoresPage {
 
       	console.log("status: ok");
         this.empresasList=data;
+        this.backupEmpresasList=data;
         console.log(this.empresasList);
         loading.dismiss();
       },
@@ -83,5 +86,29 @@ export class ExpositoresPage {
 	  });
 	  alert.present();
 	}
+
+
+   //Metodo para inicializar el arreglo contactosList
+  initializeIContactosList() {
+       this.empresasList=this.backupEmpresasList;
+  }
+  
+
+  //Metodo de busqueda
+  getItems(ev: any) {
+      // Reset items back to all of the items
+      this.initializeIContactosList();
+
+
+      // set val to the value of the searchbar
+      let val = ev.target.value;
+
+      // if the value is an empty string don't filter the items
+      if (val && val.trim() != '') {
+        this.empresasList = this.empresasList.filter((empresa) => {
+          return (empresa.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        })
+      }
+  }
 
 }

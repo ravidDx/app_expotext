@@ -20,12 +20,15 @@ import {ContactosProvider} from '../../providers/contactos/contactos';
 export class ContactosPage {
   idUser:any;
   contactosList:any;
+  backupContactosList:any;
+  searchQuery: string = '';
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public loadingCtrl: LoadingController,
               public contactCtrl:ContactosProvider) {
       this.idUser = navParams.data;
+      
       console.log("idUser: "+this.idUser);
 
   }
@@ -55,6 +58,7 @@ export class ContactosPage {
       data=>{
         console.log("status: ok");
         this.contactosList=data;
+        this.backupContactosList=data;
         loading.dismiss();
       },
       err=>{
@@ -65,5 +69,31 @@ export class ContactosPage {
       })
       
   }
+
+
+  //Metodo para inicializar el arreglo contactosList
+  initializeIContactosList() {
+       this.contactosList=this.backupContactosList;
+  }
+  
+
+  //Metodo de busqueda
+  getItems(ev: any) {
+      // Reset items back to all of the items
+      this.initializeIContactosList();
+
+
+      // set val to the value of the searchbar
+      let val = ev.target.value;
+
+      // if the value is an empty string don't filter the items
+      if (val && val.trim() != '') {
+        this.contactosList = this.contactosList.filter((contacto) => {
+          return (contacto.names.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        })
+      }
+  }
+
+
 
 }
