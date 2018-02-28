@@ -10,6 +10,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';     
 import { CustomFormsModule } from 'ng2-validation';
 import { IonicStorageModule } from '@ionic/storage';
+import { Calendar } from '@ionic-native/calendar';
 
 import { MyApp } from './app.component';
 
@@ -78,6 +79,7 @@ import { ContactosProvider } from '../providers/contactos/contactos';
     SplashScreen,
     DocumentViewer,
     BarcodeScanner,
+    Calendar,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ExpositoresProvider,
     UsuariosProvider,

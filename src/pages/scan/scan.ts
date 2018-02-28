@@ -20,6 +20,8 @@ import { AlertController } from 'ionic-angular';
 })
 export class ScanPage {
 
+  urlLogo:string="http://192.168.0.106/storage";
+
   scannedCode:any;
   email:any;
   message:any;
@@ -27,9 +29,15 @@ export class ScanPage {
   idUser:any; //contacto 1
   idContacto:any; //contacto 2
 
-  urlLogo:string="http://192.168.0.106/storage";
-
   userPerfil:any;
+
+  //vARIABLES PARA EL LECTOR QR
+  buttonText:any;
+  load:any;
+  options:any;
+  scannedText:any;
+  
+
 
   constructor(public navCtrl: NavController, 
   	          public navParams: NavParams,
@@ -47,9 +55,32 @@ export class ScanPage {
     console.log('ionViewDidLoad ScanPage');
   }
 
+
+
+  //Metodo que scanea el codigo qr y agrega a contactos
   leerQr(){
       let loading:any;
-      this.barcodeScanner.scan().then((barcodeData) => {
+
+      //Configuraciones del lector QR
+      this.options = {
+        formats: 'QR_CODE',
+        prompt : "Por favor escanea el codigo QR"+ "\n"+ "para agregar a tus contactos",
+        buttonText : 'Loading…',
+        load : true,
+        resultDisplayDuration:0
+      }
+       
+       //Llamado a la lectuca del codigo qr
+      this.barcodeScanner.scan(this.options).then((barcodeData) => {
+
+        //Si cancela la lectura se ejecuta este if
+       if (barcodeData.cancelled) {
+            console.log("User cancelled the action!");
+            this.buttonText = "Scan";
+            this.load = false;
+            return false;
+        }
+
       this.scannedCode = barcodeData.text;
       loading = this.loadingCtrl.create({
         content: 'Por favor espere...'
@@ -101,7 +132,9 @@ export class ScanPage {
 
            }else{
              console.log("No existe usuario");
-             this.message="usuario no registrado";          
+             this.message="usuario no registrado";  
+             this.lanzarMensaje(this.message);
+                    
            }
             loading.dismiss();
 
@@ -131,12 +164,17 @@ export class ScanPage {
    lanzarMensaje(text:any){
       let toast = this.toastCtrl.create({
         message:text,
-        duration:3000,
-        position:'top'
+        duration:5000,
+        position:'top',
+        cssClass: "toast-container"
       });
       toast.present();
     }
 
+
+
+
+ 
 
 
 
