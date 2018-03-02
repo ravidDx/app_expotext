@@ -4,6 +4,8 @@ import { AlertController } from 'ionic-angular';
 
 //Servicio
 import {ExpositoresProvider} from '../../providers/expositores/expositores';
+//Servicio API
+import {ApiProvider} from '../../providers/api/api';
 
 /**
  * Generated class for the ExpositoresPage page.
@@ -22,20 +24,18 @@ export class ExpositoresPage {
   empresasList:any;
   backupEmpresasList:any;
   searchQuery: string = '';
-  //urlLogo:string="http://127.0.0.1:8000/storage";
-  //urlLogo:string="http://localhost/storage";
-  //urlLogo:string="http://192.168.0.23/storage";
-  urlLogo:string="http://192.168.0.106/storage";
- 
-    
+
+  urlLogo:string=this.apiCtrl.urlApi+"storage";
+  
 
   /*CONSTRUCTOR*/
   /*--------------------------------------------------------*/
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
   	          public navParams: NavParams,
   	          public expositorCtrl:ExpositoresProvider,
   	          private alertCtrl: AlertController,
-              public loadingCtrl: LoadingController) {
+              public loadingCtrl: LoadingController,
+              public apiCtrl:ApiProvider) {
   }
 
   /*METODOS*/
@@ -45,7 +45,7 @@ export class ExpositoresPage {
   ionViewDidLoad() {
   }
 
-  //Se ejecuta cuando entras en una página, antes de cargarla. 
+  //Se ejecuta cuando entras en una página, antes de cargarla.
   ionViewWillEnter(){
     console.log('ionViewWillEnter ExpositoresPage');
 
@@ -54,7 +54,7 @@ export class ExpositoresPage {
     });
 
     loading.present();
-    
+
     //Consulta de las empresas en el Servidor
     this.expositorCtrl.getAllEmpresas().subscribe(
       data=>{
@@ -69,9 +69,9 @@ export class ExpositoresPage {
       	console.log("status: error");
         console.log(err);
          loading.dismiss();
-        
+
       })
-      
+
   }
 
   //Funcion que presenta informacion de la empresa
@@ -92,7 +92,7 @@ export class ExpositoresPage {
   initializeIContactosList() {
        this.empresasList=this.backupEmpresasList;
   }
-  
+
 
   //Metodo de busqueda
   getItems(ev: any) {

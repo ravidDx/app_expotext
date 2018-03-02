@@ -78,7 +78,7 @@
       </div>
       
       <ion-item class="itemForm" [hidden]=!page>
-         <ion-datetime displayFormat="MM/DD/YYYY" [formControl]="birth" placeholder="Fecha de Nacimiento"></ion-datetime>
+         <ion-datetime displayFormat="DD/MM/YYYY" [formControl]="birth" placeholder="Fecha de Nacimiento"></ion-datetime>
          <!--
          <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="DD MMMM YYYY" min="1918" max="2018" [formControl]="birth" placeholder="Fecha de Nacimiento">
         </ion-datetime>
@@ -104,12 +104,17 @@
           <p id="form-text-err" *ngIf="registroForm.get('activity').hasError('maxlength')">* maximo de 40 digitos</p>
       </div>
 
-       <ion-item class="itemForm" [hidden]=page>
-        <ion-input [formControl]="id_category" class="input" type="text" placeholder="Categoria"></ion-input>
+      <ion-item class="itemForm" [hidden]=page>
+        <!--<ion-input [formControl]="id_category" class="input" type="text" placeholder="Categoria"></ion-input>-->
+          <ion-label>Categoria</ion-label>
+            <ion-select [formControl]="id_category"  >
+              <ion-option *ngFor="let categoria of categoriasList; " value="{{categoria.id}}">{{categoria.category}}</ion-option>
+            </ion-select>
       </ion-item>
       <div *ngIf="registroForm.get('id_category').errors && registroForm.get('id_category').dirty" [hidden]=page>
           <p id="form-text-err" *ngIf="registroForm.get('id_category').hasError('required')">* campo es requerido</p>
       </div>
+
 
       <ion-item class="itemForm" [hidden]=page>
         <ion-input  [formControl]="city" class="input" type="text" placeholder="Ciudad"></ion-input>
@@ -137,6 +142,8 @@
 
     </form>
 	
+
+
 </ion-content>
 
 	<ion-footer>

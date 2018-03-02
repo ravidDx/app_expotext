@@ -1,7 +1,9 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+   import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
+//Servicio API
+import {ApiProvider} from '../../providers/api/api';
 
 /*
   Generated class for the ContactosProvider provider.
@@ -15,13 +17,14 @@ export class ContactosProvider {
   //url:string = "http://192.168.0.23/api/contacts";
   //url2:string = "http://192.168.0.23/api/perfil";
   
-  url:string = "http://192.168.0.106/api/contacts";
-  url2:string = "http://192.168.0.106/api/perfil";
-
+  url:string = this.apiCtrl.urlApi+"api/contacts";
+  url2:string = this.apiCtrl.urlApi+"api/perfil";
+ 
 
   cabecera;  
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient,
+              public apiCtrl:ApiProvider) {
     console.log('Hello ContactosProvider Provider');
   }
 

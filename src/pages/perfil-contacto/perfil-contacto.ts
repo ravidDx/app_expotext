@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+//Servicio API
+import {ApiProvider} from '../../providers/api/api';
 
 /**
  * Generated class for the PerfilContactoPage page.
@@ -16,10 +18,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class PerfilContactoPage {
 
   contacto:any;
-  urlLogo:string="http://192.168.0.106/storage";
+  urlLogo:string=this.apiCtrl.urlApi+"storage";
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams) 
+              public navParams: NavParams,
+               public apiCtrl:ApiProvider) 
   {
   	this.contacto = this.navParams.get("contacto");
 	console.log(this.contacto);

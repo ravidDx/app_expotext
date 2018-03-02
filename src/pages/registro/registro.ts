@@ -3,7 +3,8 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 import {FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn} from '@angular/forms';
 import {UsuariosProvider} from '../../providers/usuarios/usuarios';
 import { ToastController } from 'ionic-angular'; //Importando Componente TOAS de IONIC
-
+//Servicio
+import {CategoriasProvider} from '../../providers/categorias/categorias';
 
 
 
@@ -46,13 +47,17 @@ export class RegistroPage {
   hidden=true;
   valor;
 
+   categoriasList:any;
+
+
 
   constructor(public navCtrl: NavController, 
   	          public navParams: NavParams,
   	          private fb:FormBuilder,
               private usuariosCtrl:UsuariosProvider,
               private toastCtrl:ToastController,
-              private loadingCtrl:LoadingController) 
+              private loadingCtrl:LoadingController,
+              private categoriaCtrl:CategoriasProvider) 
   {
 
   	this.registroForm = fb.group({
@@ -89,6 +94,20 @@ export class RegistroPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegistroPage');
+
+    //Consulta de las empresas en el Servidor
+    this.categoriaCtrl.getAllCategorias().subscribe(
+      data=>{
+
+        console.log("status: ok");
+        this.categoriasList=data;
+        console.log(this.categoriasList);
+              },
+      err=>{
+        console.log("status: error");
+        console.log(err);
+        
+      })
   }
 
   //Ir a Page 2 de Registro

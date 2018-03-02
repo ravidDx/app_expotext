@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
+import {ApiProvider} from '../../providers/api/api';
 
 /*
   Generated class for the EventosProvider provider.
@@ -11,10 +12,12 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class EventosProvider {
   
-  url:string = "http://192.168.0.106/api/eventos";
+  url:string = this.apiCtrl.urlApi+"api/eventos";
+ 
   cabecera:any;
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient,
+              public apiCtrl:ApiProvider) {
     console.log('Hello EventosProvider Provider');
     this.cabecera = new HttpHeaders().set('content-type', 'application/json');
     this.cabecera.set('Access-Control-Allow-Origin', '*');

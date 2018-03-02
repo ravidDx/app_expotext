@@ -33,6 +33,8 @@ import { ExpositoresProvider } from '../providers/expositores/expositores';
 import { UsuariosProvider } from '../providers/usuarios/usuarios';
 import { ContactosProvider } from '../providers/contactos/contactos';
 import { EventosProvider } from '../providers/eventos/eventos';
+import { ApiProvider } from '../providers/api/api';
+import { CategoriasProvider } from '../providers/categorias/categorias';
 
 
 @NgModule({
@@ -87,7 +89,9 @@ import { EventosProvider } from '../providers/eventos/eventos';
     ExpositoresProvider,
     UsuariosProvider,
     ContactosProvider,
-    EventosProvider
+    EventosProvider,
+    ApiProvider,
+    CategoriasProvider
   ]
 })
 export class AppModule {}

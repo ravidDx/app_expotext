@@ -2,6 +2,8 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
+//Servicio API
+import {ApiProvider} from '../../providers/api/api';
 
 
 
@@ -14,17 +16,17 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UsuariosProvider {
 
-  //url:string = "http://localhost:8000/api/users";
+  url:string = this.apiCtrl.urlApi+"api/users";
 
-  //url:string = "http://192.168.0.23/api/users";
-  url:string = "http://192.168.0.106/api/users";
-  cabecera;	
+  cabecera;
 
-  constructor(public http: HttpClient) {
+
+  constructor(public http: HttpClient,
+              public apiCtrl:ApiProvider) {
     console.log('Hello UsuariosProvider Provider');
   }
 
-  
+
   //Metodo que se conecta con el servidor y registra al usuario
   registerUser(usuario:any){
 
@@ -48,11 +50,11 @@ export class UsuariosProvider {
 	      }
 	    )
   }
-  
+
   //Metodo que se conecta con el servidor para ver si existe el usuario
   loginUser(email:string,password:string){
     console.log("Provider");
- 
+
     return this.http.get(this.url+'/'+email+"♥"+password).map(
       res => {
         console.log("¡ Solicitud recibida !");
@@ -65,8 +67,29 @@ export class UsuariosProvider {
 
 
   }
+  updateUser(user:any, id:any){
+    this.cabecera = new HttpHeaders().set('content-type', 'application/json');
+    this.cabecera.set('Access-Control-Allow-Origin', '*');
+    this.cabecera.set('Access-Control-Allow-Credentials', 'true');
+    this.cabecera.set('Access-Control-Allow-Headers', 'Content-Type');
+    this.cabecera.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
 
-  
+    //let body = JSON.stringify(usuario);
+    // http://192.168.0.26/api/users/2
+    console.log(user);
+    return this.http.put(this.url+"/"+id,user, { headers: this.cabecera }).map(
+      res =>{
+        console.log("¡ Solicitud recibida !");
+        return res;
+      },
+      err =>{
+        console.log("¡ Solicitud recibida !");
+        return err;
+      }
+    )
+  }
+
+
 
 
 

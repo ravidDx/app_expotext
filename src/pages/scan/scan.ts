@@ -5,6 +5,8 @@ import {ContactosProvider} from '../../providers/contactos/contactos';
 import { ToastController } from 'ionic-angular'; //Importando Componente TOAS de IONIC
 import { ContactosPage } from '../index.pages'
 import { AlertController } from 'ionic-angular';
+//Servicio API
+import {ApiProvider} from '../../providers/api/api';
 
 /**
  * Generated class for the ScanPage page.
@@ -20,7 +22,8 @@ import { AlertController } from 'ionic-angular';
 })
 export class ScanPage {
 
-  urlLogo:string="http://192.168.0.106/storage";
+  urlLogo:string=this.apiCtrl.urlApi+"storage";
+  
 
   scannedCode:any;
   email:any;
@@ -45,7 +48,8 @@ export class ScanPage {
               public loadingCtrl: LoadingController,
               public contactCtrl:ContactosProvider,
               private toastCtrl:ToastController,
-              private alertCtrl: AlertController) {
+              private alertCtrl: AlertController,
+              public apiCtrl:ApiProvider) {
 
     this.idUser = navParams.data;
 

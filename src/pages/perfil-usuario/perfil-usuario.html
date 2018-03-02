@@ -42,9 +42,12 @@
               <p>{{usuario.names}} {{usuario.last_names}}</p>
             </ion-item>
         </ion-col>
-        
+
       </ion-row>
       <br>
+    <ion-fab middle right edge>
+      <button ion-fab mini (click)="mostrar()"><ion-icon name="create"></ion-icon></button>
+    </ion-fab>
       <ion-row >
         <ion-col col-4>
            <ion-label class="text-label" >Cédula</ion-label>
@@ -64,7 +67,16 @@
         </ion-col>
       </ion-row>
 
+      <ion-row>
+        <ion-col [hidden]= valido >
+          <button ion-button round outline (click)="editar()">Editar</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button round outline (click)="salir()">Salir</button>
+        </ion-col>
+    </ion-row>
+
 
     </ion-grid>
-	
+
 </ion-content>

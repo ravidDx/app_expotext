@@ -24,6 +24,7 @@ export class LoginPage {
 
   error:any;
   err:any;
+  private rootPage:any;
 
   email: AbstractControl;
   password:AbstractControl;
@@ -47,19 +48,22 @@ export class LoginPage {
   	//const options: DocumentViewerOptions = {title: 'My PDF'}
 	  //this.err=this.document.viewDocument('assets/pdf/cuento.pdf', 'application/pdf', options);
 	  //console.log(this.err.error);
-    console.log("Contructor");
+
+      console.log("Contructor");
     this.loginForm = fb.group({
       'email' : ['',Validators.compose([Validators.required,Validators.email ])],
       'password' : ['',Validators.compose([Validators.required])],
     });
-
     this.email = this.loginForm.controls['email'];
-    this.password = this.loginForm.controls['password'];     
+    this.password = this.loginForm.controls['password'];
 
+    //Obteniendo valores del localStorage
+    let lclStorage = JSON.parse(localStorage.getItem("loginJson"));
+    if (lclStorage!= null){
+      console.log("hay un usuario localstorage");
+      this.navCtrl.setRoot(TabsPage,{'usuario':lclStorage.user} );
+    }
   }
-
-
-
   /*METODOS*/
   /*-----------------------------------------------------------------------------*/
 
@@ -89,11 +93,19 @@ export class LoginPage {
          console.log('Status: Ok.');
           if(data['status']=='200'){
              console.log("Si existe usuario");
-             //this.navCtrl.setRoot(MenuPage,{'parametro':data});
-              this.navCtrl.setRoot(TabsPage,{'usuario':data['data']} );
+
+             //Enviamos valores al localStorage del usuario
+            let jsonLogin ={
+              "email":this.email.value,
+              "pass":this.password.value,
+              "user":data['data']
+            };
+            localStorage.setItem("loginJson", JSON.stringify(jsonLogin));
+            this.navCtrl.setRoot(TabsPage,{'usuario':data['data']} );
+
            }else{
              console.log("Credenciales invalidas");
-             this.errorMessage=data['message'];          
+             this.errorMessage=data['message'];
            }
          loading.dismiss();
 
