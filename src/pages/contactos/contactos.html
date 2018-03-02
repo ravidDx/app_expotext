@@ -11,16 +11,29 @@
 	<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
 		
 	<ion-list>
-	  <ion-item class="item-expositor" *ngFor="let contacto of contactosList; let i=index "  (click)="goPerfilContactoPage()" >
-	    <ion-avatar item-start>
-	      <img id="logo-expositor" src="assets/imgs/expositores/perfil.jpg">
-	    </ion-avatar>
-	    <h2>{{contacto.names}} {{contacto.last_names}}</h2>
-	    <h3>{{contacto.name}}</h3>
-	    <p>{{contacto.phone}}</p>
+	  <ion-item-sliding #item *ngFor="let contacto of contactosList; let i=index "  (click)="goPerfilContactoPage(i)">
+		  <ion-item class="item-expositor"  >
+		    <ion-avatar item-start>
+		      <img id="logo-expositor" src="assets/imgs/expositores/perfil.jpg">
+		    </ion-avatar>
+		    <h2>{{contacto.names}} {{contacto.last_names}}</h2>
+		    <h3>{{contacto.name}}</h3>
+		    <p>{{contacto.phone}}</p>
+	      </ion-item>
+	      <ion-item-options side="right">
+	      	<button ion-button color="secondary"(click)="llamar()">
+			    <ion-icon name="ios-call-outline"></ion-icon>
+			    Llamar
+			  </button>
+		      <button ion-button color="danger"(click)="borrar()">
+			    <ion-icon name="ios-trash-outline"></ion-icon>
+			    Borrar
+			  </button>
+		  </ion-item-options>
 
-	  </ion-item>
+	 </ion-item-sliding>
 	</ion-list>
 
 
 </ion-content>
+

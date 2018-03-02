@@ -38,9 +38,10 @@ export class ContactosPage {
   }
 
   //ir a page perfil contacto
-  goPerfilContactoPage(){
+  goPerfilContactoPage(id:any){
     console.log('Ir a Pagina Pefil Contacto');
-    this.navCtrl.push(PerfilContactoPage);
+    
+    this.navCtrl.push(PerfilContactoPage,  {'contacto':this.contactosList[id]}  );
   }
 
     //Se ejecuta cuando entras en una página, antes de cargarla. 
@@ -92,6 +93,17 @@ export class ContactosPage {
           return (contacto.names.toLowerCase().indexOf(val.toLowerCase()) > -1);
         })
       }
+  }
+
+
+  llamar(){
+    //console.log(phone);
+
+  }
+
+  borrar(){
+   // console.log(id);
+
   }
 
 

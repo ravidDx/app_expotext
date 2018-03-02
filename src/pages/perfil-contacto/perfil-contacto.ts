@@ -15,7 +15,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PerfilContactoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  contacto:any;
+  urlLogo:string="http://192.168.0.106/storage";
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams) 
+  {
+  	this.contacto = this.navParams.get("contacto");
+	console.log(this.contacto);
+
   }
 
   ionViewDidLoad() {
