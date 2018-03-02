@@ -154,8 +154,7 @@ export class ScanPage {
 		 // Success! Barcode data is here
 		}, (err) => {
 		    console.log("Err");
-         loading.dismiss();
-		    
+         loading.dismiss();		    
 		});
   }
 

@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { IonicStorageModule } from '@ionic/storage';
 import { Calendar } from '@ionic-native/calendar';
+import { CalendarModule } from "ion2-calendar";
 
 import { MyApp } from './app.component';
 
@@ -31,6 +32,7 @@ import { LoginPage,
 import { ExpositoresProvider } from '../providers/expositores/expositores';
 import { UsuariosProvider } from '../providers/usuarios/usuarios';
 import { ContactosProvider } from '../providers/contactos/contactos';
+import { EventosProvider } from '../providers/eventos/eventos';
 
 
 @NgModule({
@@ -55,6 +57,7 @@ import { ContactosProvider } from '../providers/contactos/contactos';
     HttpModule,
     FormsModule,
     CustomFormsModule,
+    CalendarModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -83,7 +86,8 @@ import { ContactosProvider } from '../providers/contactos/contactos';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ExpositoresProvider,
     UsuariosProvider,
-    ContactosProvider
+    ContactosProvider,
+    EventosProvider
   ]
 })
 export class AppModule {}

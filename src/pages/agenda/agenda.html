@@ -6,6 +6,119 @@
 -->
 
 
-<ion-content padding>
-	<h1>PAGINA AGENDA</h1>	
-</ion-content>
+<ion-content padding id="content-main" >
+	<ion-header id="header-main">
+		<p id="fecha-text">{{fecha}}</p>
+		
+	  	<ion-segment  [(ngModel)]="mymodel" (click)='onEventos(mymodel)' color="dark" >
+		    <ion-segment-button value="16">
+		      16
+		    </ion-segment-button>
+		    <ion-segment-button value="17">
+		     17
+		    </ion-segment-button>
+		    <ion-segment-button value="18">
+		     18
+		    </ion-segment-button>
+        </ion-segment>
+
+	</ion-header>
+
+   <div [ngSwitch]="mymodel">
+	    <ion-list *ngSwitchCase="'16'">
+	    	<ion-card-content id="section-card">
+		    	<ion-grid >
+
+				  <ion-row *ngFor="let evento of eventosList; let i=index "  (click)="presentInform(i)">
+				    <ion-col col-10>
+				    	<p>{{evento.speaker_description}}</p>
+				    </ion-col>
+				    <ion-col col-2 center text-center>
+				    	<p>
+					    	<ion-note>
+					        <!--11h ago-->
+					        {{evento.date | date : "h:mm a"}}
+					      </ion-note>
+				       </p>
+				    </ion-col>
+				  </ion-row>
+
+				</ion-grid>
+		    </ion-card-content>	       
+	    </ion-list>
+	    <ion-list *ngSwitchCase="'17'">
+	    	
+	    	<ion-card-content id="section-card">
+		    	<ion-grid >
+
+				  <ion-row *ngFor="let evento of eventosList; let i=index "  (click)="presentInform(i)">
+				    <ion-col col-10>
+				    	<p>{{evento.speaker_description}}</p>
+				    </ion-col>
+				    <ion-col col-2 center text-center>
+				    	<p>
+					    	<ion-note>
+					        {{evento.date | date : "h:mm a"}}
+					      </ion-note>
+				       </p>
+				    </ion-col>
+				  </ion-row>
+
+				</ion-grid>
+		    </ion-card-content>	  
+
+	    </ion-list>
+	    <ion-list *ngSwitchCase="'18'">
+	    	<ion-card-content id="section-card">
+		    	<ion-grid >
+
+				  <ion-row *ngFor="let evento of eventosList; let i=index "  (click)="presentInform(i)">
+				    <ion-col col-10>
+				    	<p>{{evento.speaker_description}}</p>
+				    </ion-col>
+				    <ion-col col-2 center text-center>
+				    	<p>
+					    	<ion-note>
+					        {{evento.date | date : "h:mm a"}}
+					      </ion-note>
+				       </p>
+				    </ion-col>
+				  </ion-row>
+
+				</ion-grid>
+		    </ion-card-content>	  
+	    </ion-list>
+	</div>
+
+</ion-content >
+
+<ion-footer id="footer-main">
+    <ion-grid >
+    	 <ion-row text-center>
+	      <ion-col col-12 >
+	      	Presentado por
+	      </ion-col>
+	     </ion-row>	
+	    <ion-row text-center id="section-slider" >
+	      <ion-col col-12 >
+	         <ion-slides autoplay="5000" loop="true" speed="3000" >
+	            <ion-slide >
+	              <img src="../../assets/imgs/logos/1.logo-capeipi-textil-xpotex.png">
+	            </ion-slide>
+	            <ion-slide >
+	               <img src="../../assets/imgs/logos/2.logo-capeipi-xpotex.png">
+	            </ion-slide>
+	            <ion-slide >
+	              <img src="../../assets/imgs/logos/3.logo-ceq-xpotex.png">
+	            </ion-slide>
+	            <ion-slide >
+	              <img src="../../assets/imgs/logos/4.logo-gadpp-xpotex.png">
+	            </ion-slide>
+	            <ion-slide >
+	              <img src="../../assets/imgs/logos/5.logo-ministerio-inductrias-productividad-xpotex.png">
+	            </ion-slide>
+	          </ion-slides>
+	      </ion-col>
+	    </ion-row>
+	  </ion-grid>
+</ion-footer>
