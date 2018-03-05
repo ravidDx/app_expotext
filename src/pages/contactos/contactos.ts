@@ -23,6 +23,9 @@ export class ContactosPage {
   backupContactosList:any;
   searchQuery: string = '';
 
+  msg: string = '';
+
+
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public loadingCtrl: LoadingController,
@@ -47,7 +50,7 @@ export class ContactosPage {
     //Se ejecuta cuando entras en una página, antes de cargarla. 
   ionViewWillEnter(){
     console.log('ionViewWillEnter ExpositoresPage');
-
+    this.msg=null;
     let loading = this.loadingCtrl.create({
         content: 'Por favor espere...'
     });
@@ -58,8 +61,15 @@ export class ContactosPage {
     this.contactCtrl.allContactos(this.idUser).subscribe(
       data=>{
         console.log("status: ok");
+
         this.contactosList=data;
-        this.backupContactosList=data;
+        this.backupContactosList=data; 
+        
+        if (this.contactosList.length == 0) {
+          //execute
+          this.msg="! Aun no tienes contactos ¡";
+          
+        }      
         loading.dismiss();
       },
       err=>{

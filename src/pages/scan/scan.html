@@ -5,47 +5,31 @@
   Ionic pages and navigation.
 -->
 
+<ion-content  id="content-primary">
 
-<ion-content padding id="content-main">
+  <!-- SLIDERS--> 
+  <ion-header no-border id="header-slider" >
+    <ion-slides autoplay="5000" loop="true" speed="3000" effect="fade" pager="true">
+      <ion-slide *ngFor="let imgSlider of imgsSlider">
+        <img src="{{imgSlider.img}}" alt="{{imgSlider.name}}">
+      </ion-slide>
+    </ion-slides>
+  </ion-header>
 
-  <ion-grid id="section-2">
-    <ion-row text-center>
-      <ion-col col-12 >
-         <ion-slides autoplay="5000" loop="true" speed="3000" >
-            <ion-slide >
-              <img src="../../assets/imgs/slider/1-portada-xpotex.jpg">
-            </ion-slide>
-            <ion-slide >
-              <img src="../../assets/imgs/slider/2-pasarela-xpotex.jpg">
-            </ion-slide>
-            <ion-slide >
-              <img src="../../assets/imgs/slider/3-noche-xpotex.jpg">
-            </ion-slide>
-            <ion-slide >
-              <img src="../../assets/imgs/slider/4-conferencias-xpotex.jpg">
-            </ion-slide>
-            <ion-slide >
-              <img src="../../assets/imgs/slider/5-networking-xpotex.jpg">
-            </ion-slide>
-            <ion-slide >
-              <img src="../../assets/imgs/slider/6-nueva-competencia-xpotex.jpg">
-            </ion-slide>
-          </ion-slides>
-  
-      </ion-col>
-    </ion-row>
-  </ion-grid>
- 
-  <div id="section-3" (click)="leerQr()">
-	  <ion-grid >
-	    <ion-row text-center>
-	      <ion-col col-12 >
-	      	<ion-card>
-		      <img src="../../assets/imgs/qr1.png">
-		 	</ion-card>
-	      </ion-col>
-	    </ion-row>
-	  </ion-grid>
-  </div>
+  <!-- CONTENT SECONDARY --> 
+  <ion-content id="content-secondary">
+    <ion-grid center text-center>
+      <ion-row >
+        <ion-col col-12 >
+           <h5 id="title-1">SCANEAME</h5>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12 >
+           <img src="../../assets/imgs/xpotext-qr.png" alt="xpotext-qr">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content> 
 
 </ion-content>

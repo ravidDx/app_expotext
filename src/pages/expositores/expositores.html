@@ -6,21 +6,36 @@
 -->
 
 
-<ion-content padding>
+<ion-content>
 
-	<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+	<!-- Section buscador --> 
+	<ion-header>
+		<br>
+		<h4 center text-center id="title-1">Expositores</h4>
+		<div id="section-buscador">
+		 	<ion-searchbar (ionInput)="getItems($event)" placeholder="buscar expositores"></ion-searchbar>
+		</div>
+	</ion-header>
+
+	 <!-- CONTENT SECONDARY --> 
+	<ion-content id="content-secondary">
+		<!-- Section Contactos --> 
+		<div id="section-expositores">
+			<ion-list>
+			  <ion-item class="item-expositor" *ngFor="let empresa of empresasList; let i=index "  (click)="presentInform(i)" >
+			    <ion-avatar item-start>
+			      <img id="logo-expositor" src="{{urlLogo}}/{{empresa.logo}}">
+			    </ion-avatar>
+			    <h2>{{empresa.name}}</h2>
+			    <h3>{{empresa.phone}}</h3>
+			    <p>{{empresa.web_link}}</p>
+			    <p>{{empresa.email}}</p>
+			    <p>{{empresa.company_address}}</p>
+			  </ion-item>
+			</ion-list>
 	
-	<ion-list>
-	  <ion-item class="item-expositor" *ngFor="let empresa of empresasList; let i=index "  (click)="presentInform(i)" >
-	    <ion-avatar item-start>
-	      <img id="logo-expositor" src="{{urlLogo}}/{{empresa.logo}}">
-	    </ion-avatar>
-	    <h2>{{empresa.name}}</h2>
-	    <h3>{{empresa.phone}}</h3>
-	    <p>{{empresa.web_link}}</p>
-	    <p>{{empresa.email}}</p>
-	    <p>{{empresa.company_address}}</p>
-	  </ion-item>
-	</ion-list>
+		</div> 
+	</ion-content>
+
 
 </ion-content>

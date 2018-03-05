@@ -1,80 +1,32 @@
 
 
-<ion-content padding id="content-main">
-
-  <ion-grid id="section-2">
-    <ion-row text-center>
-      <ion-col col-12 >
-         <ion-slides autoplay="5000" loop="true" speed="3000" >
-            <ion-slide >
-              <img src="../../assets/imgs/slider/1-portada-xpotex.jpg">
-            </ion-slide>
-            <ion-slide >
-              <img src="../../assets/imgs/slider/2-pasarela-xpotex.jpg">
-            </ion-slide>
-            <ion-slide >
-              <img src="../../assets/imgs/slider/3-noche-xpotex.jpg">
-            </ion-slide>
-            <ion-slide >
-              <img src="../../assets/imgs/slider/4-conferencias-xpotex.jpg">
-            </ion-slide>
-            <ion-slide >
-              <img src="../../assets/imgs/slider/5-networking-xpotex.jpg">
-            </ion-slide>
-            <ion-slide >
-              <img src="../../assets/imgs/slider/6-nueva-competencia-xpotex.jpg">
-            </ion-slide>
-          </ion-slides>
+<ion-content id="content-primary">
   
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <!-- SLIDERS--> 
+  <ion-header no-border id="header-slider" >
+    <ion-slides autoplay="5000" loop="true" speed="3000" effect="fade" pager="true">
+      <ion-slide *ngFor="let imgSlider of imgsSlider">
+        <img src="{{imgSlider.img}}" alt="{{imgSlider.name}}">
+      </ion-slide>
+    </ion-slides>
+  </ion-header>
   
- 
+  <!-- CONTENT SECONDARY --> 
+  <ion-content id="content-secondary">
 
- 
-  <ion-grid id="section-3">
-    <ion-row text-center>
-      <ion-col col-12 >
-         <h2 id="text">Marcas Auspiciantes</h2>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-6>
-        <ion-thumbnail item-start>
-          <img src="../../assets/imgs/logos/1.logo-capeipi-textil-xpotex-bn.png">
-        </ion-thumbnail>
-      </ion-col>
-      <ion-col col-6 id="col-perfil">
-        <ion-thumbnail item-start>
-           <img src="../../assets/imgs/logos/2.logo-capeipi-xpotex-bn.png">
-        </ion-thumbnail>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col col-6>
-        <ion-thumbnail item-start>
-          <img src="../../assets/imgs/logos/3.logo-ceq-xpotex-bn.png">
-        </ion-thumbnail>
-      </ion-col>
-      <ion-col col-6 id="col-perfil">
-        <ion-thumbnail item-start>
-           <img src="../../assets/imgs/logos/4.logo-gadpp-xpotex-bn.png">
-        </ion-thumbnail>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col col-6>
-        <ion-thumbnail item-start>
-          <img src="../../assets/imgs/logos/5.logo-ministerio-inductrias-productividad-xpotex-bn.png">
-        </ion-thumbnail>
-      </ion-col>
-    </ion-row>
-
-  </ion-grid>
-
-
+    <!-- LISTADO DE LOGOS Y MARCAS AUSPICIANTES --> 
+    <ion-grid >
+      <ion-row text-center>
+        <ion-col col-12 >
+           <h5 id="title-1">Marcas Auspiciantes</h5>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6  *ngFor="let imgAuspiciante of imgsAuspiciantes" center text-center>
+            <img src="{{imgAuspiciante.img}}" alt="{{imgAuspiciante.name}}" width="90%">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content> 
   
 </ion-content>

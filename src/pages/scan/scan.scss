@@ -1,20 +1,12 @@
 page-scan {
 
-
-  #content-main{
+  #content-primary, #content-secondary {
      background-color: black;
   }
 
-  #content-main #section-2 {
-   
-  }
-
-  .toast-container  {
-    background-color: #2fb556;
-  }
-
-   
-
-   
+  #content-secondary #title-1 {
+  	color: #8b9bb7;
+    font-family: cursive;
+  }  
 
 }

@@ -13,6 +13,7 @@ export class ApiProvider {
 
   //urlApi='http://192.168.0.26/';
   urlApi='http://192.168.0.106/';
+  //urlApi='http://192.168.0.18/';
 
   constructor(public http: HttpClient) {
     console.log('Hello ApiProvider Provider');

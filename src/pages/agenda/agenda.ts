@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
-import { Calendar } from '@ionic-native/calendar';
 import { AlertController } from 'ionic-angular';
 //import { CalendarComponentOptions } from 'ion2-calendar'
 //Servicio
@@ -24,9 +23,37 @@ export class AgendaPage {
   eventosList:any;
   fecha:any;
 
+  //Arreglo de imagenes de logos y auspiciantes
+  imgsAuspiciantes=[
+      {
+        id:"1",
+        name:"logo-capeipi-textil-xpotex",
+        img:"../../assets/imgs/logos/1.logo-capeipi-textil-xpotex.png"
+      },
+      {
+        id:"2",
+        name:"logo-capeipi-xpotex",
+        img:"../../assets/imgs/logos/2.logo-capeipi-xpotex.png"
+      },
+      {
+        id:"3",
+        name:"logo-ceq-xpotex",
+        img:"../../assets/imgs/logos/3.logo-ceq-xpotex.png"
+      },
+      {
+        id:"4",
+        name:"logo-gadpp-xpotex",
+        img:"../../assets/imgs/logos/4.logo-gadpp-xpotex.png"
+      },
+      {
+        id:"5",
+        name:"logo-ministerio-inductrias-productividad-xpotex",
+        img:"../../assets/imgs/logos/5.logo-ministerio-inductrias-productividad-xpotex.png"
+      }
+  ]
+
   constructor(public navCtrl: NavController, 
   	          public navParams: NavParams,
-  	          private calendar: Calendar,
               public eventosCtrl:EventosProvider,
               private alertCtrl: AlertController,
               public loadingCtrl: LoadingController) 

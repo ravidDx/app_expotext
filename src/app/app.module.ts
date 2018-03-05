@@ -10,8 +10,6 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';     
 import { CustomFormsModule } from 'ng2-validation';
 import { IonicStorageModule } from '@ionic/storage';
-import { Calendar } from '@ionic-native/calendar';
-import { CalendarModule } from "ion2-calendar";
 
 import { MyApp } from './app.component';
 
@@ -59,7 +57,6 @@ import { CategoriasProvider } from '../providers/categorias/categorias';
     HttpModule,
     FormsModule,
     CustomFormsModule,
-    CalendarModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -84,7 +81,6 @@ import { CategoriasProvider } from '../providers/categorias/categorias';
     SplashScreen,
     DocumentViewer,
     BarcodeScanner,
-    Calendar,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ExpositoresProvider,
     UsuariosProvider,

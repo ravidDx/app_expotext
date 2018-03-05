@@ -6,34 +6,56 @@
 -->
 
 
-<ion-content padding>
+<ion-content id="content-primary">
 
-	<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+	<!-- HEADER --> 
+	<ion-header>
+		<br>
+		<h4 center text-center id="title-1">Mis Contactos</h4>
+		<!-- Section buscador --> 
+		<div id="section-buscador">
+		 	<ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar contactos"></ion-searchbar>
+		</div>
+	</ion-header>
+
+	<!-- CONTENT SECONDARY --> 
+	<ion-content id="content-secondary">
+		<!-- Section Contactos --> 
+		<div id="section-contactos">
+		    <h2 id="msg">{{msg}}</h2> 	
+			<ion-list>
 		
-	<ion-list>
-	  <ion-item-sliding #item *ngFor="let contacto of contactosList; let i=index "  (click)="goPerfilContactoPage(i)">
-		  <ion-item class="item-expositor"  >
-		    <ion-avatar item-start>
-		      <img id="logo-expositor" src="assets/imgs/expositores/perfil.jpg">
-		    </ion-avatar>
-		    <h2>{{contacto.names}} {{contacto.last_names}}</h2>
-		    <h3>{{contacto.name}}</h3>
-		    <p>{{contacto.phone}}</p>
-	      </ion-item>
-	      <ion-item-options side="right">
-	      	<button ion-button color="secondary"(click)="llamar()">
-			    <ion-icon name="ios-call-outline"></ion-icon>
-			    Llamar
-			  </button>
-		      <button ion-button color="danger"(click)="borrar()">
-			    <ion-icon name="ios-trash-outline"></ion-icon>
-			    Borrar
-			  </button>
-		  </ion-item-options>
+			  <ion-item-sliding #item *ngFor="let contacto of contactosList; let i=index "  (click)="goPerfilContactoPage(i)">
+				  <ion-item class="item-expositor"  >
+				  	
+				  	    <ion-avatar item-start>
+					    <img id="logo-expositor" src="assets/imgs/expositores/perfil.jpg">
+					    </ion-avatar>
+					    <h2>{{contacto.names}} {{contacto.last_names}}</h2>
+					    <h3>{{contacto.name}}</h3>
+				  		
+				 
+				  	<div item-right>
+				  		<p>{{contacto.phone}}</p>
+					</div>
+				
+			      </ion-item>
+			      <ion-item-options side="right">
+			      	<button ion-button color="secondary"(click)="llamar()">
+					    <ion-icon name="ios-call-outline"></ion-icon>
+					    Llamar
+					  </button>
+				      <button ion-button color="danger"(click)="borrar()">
+					    <ion-icon name="ios-trash-outline"></ion-icon>
+					    Borrar
+					  </button>
+				  </ion-item-options>
 
-	 </ion-item-sliding>
-	</ion-list>
-
+			 </ion-item-sliding>
+			
+			</ion-list>
+		</div> 
+	</ion-content>
 
 </ion-content>
 

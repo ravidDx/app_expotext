@@ -19,13 +19,15 @@ export class PerfilContactoPage {
 
   contacto:any;
   urlLogo:string=this.apiCtrl.urlApi+"storage";
+  msg:string;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
                public apiCtrl:ApiProvider) 
   {
   	this.contacto = this.navParams.get("contacto");
-	console.log(this.contacto);
+    console.log(this.contacto);
+
 
   }
 

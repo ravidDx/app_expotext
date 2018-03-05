@@ -4,7 +4,6 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-
 <ion-header id="header" >
     <ion-grid >
       <ion-row>
@@ -36,47 +35,99 @@
             <img  src="{{urlLogo}}/{{usuario.UrlFotoQR}}" alt="qr">
           </ion-thumbnail>
         </ion-col>
-        <ion-col >
-            <ion-item >
+        <ion-col col-7>
+            <ion-item>
               <h2 class="color-xpotex">Nombre y Apellido</h2>
               <p>{{usuario.names}} {{usuario.last_names}}</p>
             </ion-item>
+
+            <button  id="link" (click)="editPassword()">
+              Cambiar Contraseña
+            </button>
         </ion-col>
 
       </ion-row>
       <br>
     <ion-fab middle right edge>
-      <button ion-fab mini (click)="mostrar()"><ion-icon name="create"></ion-icon></button>
+      <button ion-fab mini color="secondary" (click)="mostrar()" ><ion-icon name="create"></ion-icon></button>
     </ion-fab>
       <ion-row >
-        <ion-col col-4>
-           <ion-label class="text-label" >Cédula</ion-label>
-           <ion-label class="text-label">Teléfono</ion-label>
-           <ion-label class="text-label">Email</ion-label>
-           <ion-label class="text-label">Empresa</ion-label>
-           <ion-label class="text-label">Actividad</ion-label>
-           <ion-label class="text-label">Dirección</ion-label>
+        <ion-col col-12>
+          <form [formGroup]="editForm" >
+            <ion-item>
+              <ion-label color="primary" fixed>Cedula</ion-label>
+              <ion-input [formControl]="cedula"  type="text" placeholder="{{usuario.cedula}}" [disabled]=valido ></ion-input>
+            </ion-item>
+            <div *ngIf="editForm.get('cedula').errors && editForm.get('cedula').dirty">
+                <p id="form-text-err" *ngIf="editForm.get('cedula').hasError('required')">* campo es requerido</p>
+                <p id="form-text-err" *ngIf="editForm.get('cedula').hasError('maxlength')">* maximo de 15 caracteres</p>
+            </div>
+
+            <ion-item>
+              <ion-label color="primary" fixed>Teléfono</ion-label>
+              <ion-input [formControl]="phone"  type="number" placeholder="{{usuario.phone}}" [disabled]=valido></ion-input>
+            </ion-item>
+            <div *ngIf="editForm.get('phone').errors && editForm.get('phone').dirty">
+                <p id="form-text-err" *ngIf="editForm.get('phone').hasError('required')">* campo es requerido</p>
+                <p id="form-text-err" *ngIf="editForm.get('phone').hasError('maxlength')">* maximo de 15 digitos</p>
+            </div>
+
+            <ion-item>
+              <ion-label color="primary" fixed>Email</ion-label>   
+              <ion-input [formControl]="email" type="email"placeholder="{{usuario.email}}" [disabled]=valido></ion-input>
+            </ion-item>
+            <div *ngIf="editForm.get('email').errors && editForm.get('email').dirty">
+                <p id="form-text-err" *ngIf="editForm.get('email').hasError('required')">* campo es requerido</p>
+                <p id="form-text-err" *ngIf="editForm.get('email').hasError('email')">* email no valido (ej. raul@raul.com)</p>
+            </div>
+
+            <ion-item>
+              <ion-label color="primary" fixed>Empresa</ion-label>
+              <ion-input [formControl]="company" type="text" placeholder="{{usuario.company}}" [disabled]=valido></ion-input> 
+            </ion-item> 
+            <div *ngIf="editForm.get('company').errors && editForm.get('company').dirty">
+              <p id="form-text-err" *ngIf="editForm.get('company').hasError('required')">* campo es requerido</p>
+              <p id="form-text-err" *ngIf="editForm.get('company').hasError('maxlength')">* maximo de 25 digitos</p>
+            </div>
+
+            <ion-item>
+              <ion-label color="primary" fixed>Actividad</ion-label>
+              <ion-input [formControl]="activity" type="text" placeholder="{{usuario.activity}}" [disabled]=valido></ion-input>
+            </ion-item>
+            <div *ngIf="editForm.get('activity').errors && editForm.get('activity').dirty" >
+              <p id="form-text-err" *ngIf="editForm.get('activity').hasError('required')">* campo es requerido</p>
+              <p id="form-text-err" *ngIf="editForm.get('activity').hasError('maxlength')">* maximo de 40 digitos</p>
+            </div>
+
+            <ion-item >
+              <ion-label color="primary" fixed>Dirección</ion-label>
+              <ion-input [formControl]="user_address" type="text"color="primary" placeholder ="{{usuario.user_address}}" [disabled]=valido></ion-input>
+            </ion-item>
+            <div *ngIf="editForm.get('user_address').errors && editForm.get('user_address').dirty" >
+              <p id="form-text-err" *ngIf="editForm.get('user_address').hasError('required')">* campo es requerido</p>
+               <p id="form-text-err" *ngIf="editForm.get('user_address').hasError('maxlength')">* maximo de 40 digitos</p>
+            </div>
+
+          </form>
         </ion-col>
-        <ion-col col-8>
-            <p class="text-p">{{usuario.cedula}}</p>
-            <p class="text-p">{{usuario.phone}}</p>
-            <p class="text-p">{{usuario.email}}</p>
-            <p class="text-p">{{usuario.company}}</p>
-            <p class="text-p">{{usuario.activity}}</p>
-            <p class="text-p">{{usuario.user_address}}</p>
-        </ion-col>
+
       </ion-row>
-
-      <ion-row>
-        <ion-col [hidden]= valido >
-          <button ion-button round outline (click)="editar()">Editar</button>
-        </ion-col>
-        <ion-col>
-          <button ion-button round outline (click)="salir()">Salir</button>
-        </ion-col>
-    </ion-row>
-
 
     </ion-grid>
 
 </ion-content>
+
+
+<ion-footer id="footer-perfil">
+  <ion-grid center text-center>
+      <ion-row>
+        <ion-col col-6>
+           <button ion-button  outline color="secondary" full  [disabled]="!editForm.valid" [hidden]=valido  (click)="editar()">Editar</button>
+        </ion-col>
+         <ion-col col-6>
+           <button id="btn-salir" ion-button  outline color="danger" full (click)="salir()">Salir</button>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+  
+</ion-footer>

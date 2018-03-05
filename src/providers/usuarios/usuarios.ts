@@ -77,6 +77,8 @@ export class UsuariosProvider {
     //let body = JSON.stringify(usuario);
     // http://192.168.0.26/api/users/2
     console.log(user);
+
+    console.log(this.url+"/"+id);
     return this.http.put(this.url+"/"+id,user, { headers: this.cabecera }).map(
       res =>{
         console.log("¡ Solicitud recibida !");

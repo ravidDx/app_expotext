@@ -21,10 +21,43 @@ import {ApiProvider} from '../../providers/api/api';
   templateUrl: 'scan.html',
 })
 export class ScanPage {
-
-  urlLogo:string=this.apiCtrl.urlApi+"storage";
   
-
+  /*Variables*/
+  /*---------------------------------------------------------*/  
+  urlLogo:string=this.apiCtrl.urlApi+"storage";
+  //Arreglo de imagenes de portadas-pasarelas
+  imgsSlider=[
+    {
+      id:"1",
+      name:"portada-xpotex",
+      img:"../../assets/imgs/slider/1-portada-xpotex.jpg"
+    },
+    {
+      id:"2",
+      name:"pasarela-xpotex",
+      img:"../../assets/imgs/slider/2-pasarela-xpotex.jpg"
+    },
+    {
+      id:"3",
+      name:"noche-xpotex",
+      img:"../../assets/imgs/slider/3-noche-xpotex.jpg"
+    },
+    {
+      id:"4",
+      name:"conferencias-xpotex",
+      img:"../../assets/imgs/slider/4-conferencias-xpotex.jpg"
+    },
+    {
+      id:"5",
+      name:"networking-xpotex",
+      img:"../../assets/imgs/slider/5-networking-xpotex.jpg"
+    },
+    {
+      id:"6",
+      name:"competencia-xpotex",
+      img:"../../assets/imgs/slider/6-nueva-competencia-xpotex.jpg"
+    }
+  ]
   scannedCode:any;
   email:any;
   message:any;
@@ -41,7 +74,8 @@ export class ScanPage {
   scannedText:any;
   
 
-
+  /*Contructor*/
+  /*-----------------------------------------------------------*/
   constructor(public navCtrl: NavController, 
   	          public navParams: NavParams,
   	          private barcodeScanner: BarcodeScanner,
@@ -54,12 +88,13 @@ export class ScanPage {
     this.idUser = navParams.data;
 
   }
+  
+  /*Metodos*/
+  /*-----------------------------------------------------------*/
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ScanPage');
   }
-
-
 
   //Metodo que scanea el codigo qr y agrega a contactos
   leerQr(){
@@ -162,9 +197,7 @@ export class ScanPage {
 		});
   }
 
-
-
-   lanzarMensaje(text:any){
+  lanzarMensaje(text:any){
       let toast = this.toastCtrl.create({
         message:text,
         duration:5000,
@@ -172,7 +205,7 @@ export class ScanPage {
         cssClass: "toast-container"
       });
       toast.present();
-    }
+  }
 
 
 
