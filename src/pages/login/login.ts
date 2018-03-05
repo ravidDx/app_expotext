@@ -63,6 +63,7 @@ export class LoginPage {
       console.log("hay un usuario localstorage");
       this.navCtrl.setRoot(TabsPage,{'usuario':lclStorage.user} );
     }
+    
   }
   /*METODOS*/
   /*-----------------------------------------------------------------------------*/

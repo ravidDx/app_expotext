@@ -22,18 +22,19 @@ export class ContactosPage {
   contactosList:any;
   backupContactosList:any;
   searchQuery: string = '';
-
   msg: string = '';
+  msgConection:string ="";
 
+  offLine=true;
+  offLineLogoPerfil:any;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public loadingCtrl: LoadingController,
-              public contactCtrl:ContactosProvider) {
-      this.idUser = navParams.data;
-      
-      console.log("idUser: "+this.idUser);
-
+              public contactCtrl:ContactosProvider) 
+  {  
+    this.idUser = navParams.data;    
+    console.log("idUser: "+this.idUser);
   }
 
   ionViewDidLoad() {
@@ -43,11 +44,10 @@ export class ContactosPage {
   //ir a page perfil contacto
   goPerfilContactoPage(id:any){
     console.log('Ir a Pagina Pefil Contacto');
-    
     this.navCtrl.push(PerfilContactoPage,  {'contacto':this.contactosList[id]}  );
   }
 
-    //Se ejecuta cuando entras en una página, antes de cargarla. 
+  //Se ejecuta cuando entras en una página, antes de cargarla. 
   ionViewWillEnter(){
     console.log('ionViewWillEnter ExpositoresPage');
     this.msg=null;
@@ -61,21 +61,34 @@ export class ContactosPage {
     this.contactCtrl.allContactos(this.idUser).subscribe(
       data=>{
         console.log("status: ok");
-
+        this.offLine=true;
         this.contactosList=data;
-        this.backupContactosList=data; 
-        
+        this.backupContactosList=data;         
+        this.setLocalStorage(data); //Enviamos valores al localStorage de contactos
         if (this.contactosList.length == 0) {
-          //execute
           this.msg="! Aun no tienes contactos ¡";
-          
-        }      
+        }
+
         loading.dismiss();
       },
       err=>{
-        console.log("status: error");
-        console.log(err);
-         loading.dismiss();
+        console.log("status: error "+err.message);
+        console.log(err); 
+        this.offLine=false;
+        this.msgConection="No tiene conexion a internet para actualizar datos!";
+
+        //Si se produce un error al conectarse con el servidor se cargara los datos del LocalStorage
+        let data = this.getLocalStorage();
+        if(data!=null){
+          console.log("Problemas con el servidor");
+          this.contactosList=data;
+          this.backupContactosList=data;     
+          if (this.contactosList.length == 0) {
+            this.msg="! Aun no tienes contactos ¡";
+          }
+        }
+
+        loading.dismiss();
         
       })
       
@@ -116,6 +129,29 @@ export class ContactosPage {
 
   }
 
+  //Metodo que envia valores al localStorage de contactos
+  setLocalStorage(data:any){
+    let jsonContactos ={
+      "contactos":data,
+      "imgPerfil":'assets/imgs/expositores/perfil.jpg'
+    };
+
+    localStorage.setItem("contactosJson", JSON.stringify(jsonContactos));
+  }
+
+  //Metodo que obtiene valores de localStorage de contactos
+  getLocalStorage(){
+    //Obteniendo valores del localStorage
+    //localStorage.removeItem("contactosJson");
+    let lclStorage = JSON.parse(localStorage.getItem("contactosJson"));
+    console.log(lclStorage);
+    if (lclStorage!= null){
+      console.log("hay contactos en localstorage");
+      this.offLineLogoPerfil=lclStorage.imgPerfil;
+      return lclStorage.contactos;
+    }
+    return null;
+  } 
 
 
 }

@@ -23,13 +23,22 @@
 		<!-- Section Contactos --> 
 		<div id="section-contactos">
 		    <h2 id="msg">{{msg}}</h2> 	
+			<p id="msgConection">{{msgConection}}</p>
 			<ion-list>
-		
 			  <ion-item-sliding #item *ngFor="let contacto of contactosList; let i=index "  (click)="goPerfilContactoPage(i)">
 				  <ion-item class="item-expositor"  >
 				  	
 				  	    <ion-avatar item-start>
-					    <img id="logo-expositor" src="assets/imgs/expositores/perfil.jpg">
+
+				  	    	<div *ngIf="offLine; then content else other_content"></div>
+							<ng-template #content>
+							  <img id="logo" src="assets/imgs/expositores/perfil.jpg">
+							</ng-template>
+							<ng-template #other_content>
+							   <img id="logo" src="{{offLineLogoPerfil}}">
+							</ng-template>
+
+					   
 					    </ion-avatar>
 					    <h2>{{contacto.names}} {{contacto.last_names}}</h2>
 					    <h3>{{contacto.name}}</h3>
